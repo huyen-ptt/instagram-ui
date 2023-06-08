@@ -2,29 +2,73 @@
   <div class="container">
     <MenuInstagram/>
     <div class="icon">
-      <div v-for="img in imgList"
-           :key="img.id"
-           @click="informationIcon"
-           class="item-icon">
-        <img :src="img.img">
-        <div class="favorite-icon">
-          <div class="trang-thai">
-            <i class="fa-solid fa-heart"></i>
-            <div>1M</div>
+      <div v-for="(imgGroup, index) in imgList"
+           :key="index"
+           class="item-icon-wrapper"
+           :class="{ 'item-icon-wrapper-right': index % 2 === 1}">
+        <div v-if="index % 2 === 0"
+             @click="informationIconLarge(imgGroup)"
+             class="item-icon large-image">
+          <img :src="imgGroup.largeImg.img">
+          <div class="favorite-icon">
+            <div class="favorite-icon-con">
+              <div class="trang-thai">
+                <i class="fa-solid fa-heart"></i>
+                <div>{{ convertedLikes(imgGroup.largeImg.like_count) }}</div>
+              </div>
+              <div class="trang-thai">
+                <i class="fa-solid fa-comment"></i>
+                <div>{{ convertedComments(imgGroup.largeImg.comment_count) }}</div>
+              </div>
+            </div>
           </div>
-          <div class="trang-thai">
-            <i class="fa-solid fa-comment"></i>
-            <div>123</div>
+        </div>
+        <div class="small-images-wrapper">
+          <div v-for="(imgData, i) in imgGroup.smallImages"
+               @click="informationIconSmall(imgData)"
+               :key="i"
+               class="item-icon">
+            <img :src="imgData.img">
+            <div class="favorite-icon">
+              <div class="favorite-icon-con">
+                <div class="trang-thai">
+                  <i class="fa-solid fa-heart"></i>
+                  <div>{{ convertedLikes(imgData.like_count) }}</div>
+                </div>
+                <div class="trang-thai">
+                  <i class="fa-solid fa-comment"></i>
+                  <div>{{ convertedComments(imgData.comment_count) }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div v-if="index % 2 === 1"
+             class="item-icon large-image"
+             @click="informationIconLarge(imgGroup)">
+          <img :src="imgGroup.largeImg.img">
+          <div class="favorite-icon">
+            <div class="favorite-icon-con">
+              <div class="trang-thai">
+                <i class="fa-solid fa-heart"></i>
+                <div>{{ convertedLikes(imgGroup.largeImg.like_count) }}</div>
+              </div>
+              <div class="trang-thai">
+                <i class="fa-solid fa-comment"></i>
+                <div>{{ convertedComments(imgGroup.largeImg.comment_count) }}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <el-dialog title=""
+    <el-dialog custom-class="no-padding-modal no-padding-header"
+               :show-close="false"
                :visible.sync="isOpenCommnetModal">
       <div class="comment-me">
         <div>
           <img class="img-post"
-               src="https://img5.thuthuatphanmem.vn/uploads/2022/01/07/glitter-mask-hnheldinw_025549768.png"/>
+               :src="currentImage?.img"/>
         </div>
         <div class="show-comments">
           <div>
@@ -32,8 +76,8 @@
               <div class="main-master">
                 <div class="title-personal-post">
                   <img class="avt-personal-post"
-                       src="../assets/avt-friend.png"/>
-                  <div class="name-personal-post">ane.tdiuz</div>
+                       :src="currentImage?.creator.avt"/>
+                  <div class="name-personal-post">{{currentImage?.creator.name}}</div>
                 </div>
                 <div style="padding-bottom: 10px;color: rgb(0 149 246);font-weight: 600;cursor: pointer">
                   follow
@@ -124,7 +168,7 @@
               </div>
               <div class="liked">
                 <div class="interactive-friends">
-                  2,377 likes
+                  {{ countLikes(currentImage?.like_count) }}
                 </div>
                 <div class="update">November 2,22</div>
               </div>
@@ -267,12 +311,167 @@ export default {
   data() {
     return {
       imgList: [
-        {img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/glitter-mask-hnheldinw_025549768.png'},
-        {img: 'https://kenh14cdn.com/2016/k2-2-1480327709662.jpg'},
-        {img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png'},
-        {img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/gliter-cat-2zz3v_025742551.png'},
-        {img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/bird-crown-emmyy_025904055.png'},
-        {img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/kira-dog-emmyy_025803334.png'}
+        {
+          largeImg: {
+            id: 1,
+            img: 'https://kenh14cdn.com/2016/k2-2-1480327709662.jpg',
+            like_count: 1805994,
+            comment_count: 20700,
+            creator:{
+              name: 'hannar',
+              avt: 'https://images.unsplash.com/photo-1593601680767-3a289f3761aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2013&q=80'
+            }
+          },
+          smallImages:
+              [
+                {
+                  id: 2,
+                  img: 'https://images.unsplash.com/photo-1611200945005-403b70229452?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+                  like_count: 1070,
+                  comment_count: 2400,
+                  creator:{
+                    name: 'ngnh_hbf',
+                    avt: 'https://images.unsplash.com/photo-1581508604398-60e52b0af39c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
+                  }
+                },
+                {
+                  id: 3,
+                  img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png',
+                  like_count: 1500,
+                  comment_count: 2600,
+                  creator:{
+                    name: 'udui.dg',
+                    avt: 'https://images.unsplash.com/photo-1611864444643-457fb0e29009?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+                  }
+                },
+                {
+                  id: 4,
+                  img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/gliter-cat-2zz3v_025742551.png',
+                  like_count: 1070,
+                  comment_count: 2030,
+                  creator:{
+                    name: 'hnuhe.hf',
+                    avt: 'https://images.unsplash.com/photo-1586723815262-83713dcfbfa1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80'
+                  }
+                },
+                {
+                  id: 5,
+                  img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/bird-crown-emmyy_025904055.png',
+                  like_count: 1020,
+                  comment_count: 2400,
+                  creator:{
+                    name: 'thah_hueyn',
+                    avt: 'https://images.unsplash.com/photo-1445053023192-8d45cb66099d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
+                  }
+                },
+              ],
+        },
+        {
+          largeImg: {
+            id: 6,
+            img: 'https://images.unsplash.com/photo-1581508604398-60e52b0af39c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80', like_count: 1300,
+            comment_count: 2040,
+            creator:{
+              name: 'hahah_hd',
+              avt: 'https://images.unsplash.com/photo-1611200945005-403b70229452?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
+            }
+          },
+          smallImages:
+              [
+                {
+                  id: 7,
+                  img: 'https://images.unsplash.com/photo-1580529642221-eb86b38636ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80', like_count: 4000,
+                  comment_count: 2000,
+                  creator:{
+                    name: 'bicngoc',
+                    avt: 'https://images.unsplash.com/photo-1580529642221-eb86b38636ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
+                  }
+                },
+                {
+                  id: 8,
+                  img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png',
+                  like_count: 6000,
+                  comment_count: 2000,
+                  creator:{
+                    name: 'cici.hn',
+                    avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png'
+                  }
+                },
+                {
+                  id: 9,
+                  img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/gliter-cat-2zz3v_025742551.png',
+                  like_count: 5000,
+                  comment_count: 2000,
+                  creator:{
+                    name: 'hywe.hn',
+                    avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png'
+                  }
+                },
+                {
+                  id: 10,
+                  img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/bird-crown-emmyy_025904055.png',
+                  like_count: 7000,
+                  comment_count: 2000,
+                  creator:{
+                    name: 'ha78qbd.hn',
+                    avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png'
+                  }
+                },
+              ],
+        },
+        {
+          largeImg: {
+            id: 11,
+            img: 'https://images.unsplash.com/photo-1609043239075-b84f30707c63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80', like_count: 1000,
+            comment_count: 2000,
+            creator:{
+              name: 'ywusn.hn',
+              avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png'
+            }
+          },
+          smallImages:
+              [
+                {
+                  id: 12,
+                  img: 'https://kenh14cdn.com/2016/k2-2-1480327709662.jpg', like_count: 1000,
+                  comment_count: 2000,
+                  creator:{
+                    name: 'hihi.hn',
+                    avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png'
+                  }
+                },
+                {
+                  id: 13,
+                  img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png',
+                  like_count: 1000,
+                  comment_count: 2000,
+                  creator:{
+                    name: 'luluy.hn',
+                    avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png'
+                  }
+                },
+                {
+                  id: 14,
+                  img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/gliter-cat-2zz3v_025742551.png',
+                  like_count: 1000,
+                  comment_count: 2000,
+                  creator:{
+                    name: 'hazz.hds',
+                    avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/gliter-cat-2zz3v_025742551.png'
+                  }
+                },
+                {
+                  id: 15,
+                  img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/bird-crown-emmyy_025904055.png',
+                  like_count: 1000,
+                  comment_count: 2000,
+                  creator:{
+                    name: 'huynHuyn.hn',
+                    avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png'
+                  }
+                },
+              ],
+        }
       ],
       commentList: [
         {
@@ -302,66 +501,128 @@ export default {
       isOpenSuggestModal: false,
       isOpenReportModal: false,
       like: false,
-      save: false
+      save: false,
+      currentImage: null
     }
   },
-  methods: {
-    openShare() {
-      this.isOpenShareModal = true
-    },
-    openSuggest() {
-      this.isOpenSuggestModal = true
-    },
-    cancelModal() {
-      this.isOpenSuggestModal = false
-    },
-    reportlModal() {
-      this.isOpenReportModal = true
-    },
-    informationIcon() {
-      this.isOpenCommnetModal = true
-    },
-    onEnter() {
-      const newComment = {
-        contentComment: this.search,
-        img: 'https://media.istockphoto.com/id/531162849/vi/anh/ng%C3%B4i-sao-nh%C3%AD.jpg?s=2048x2048&w=is&k=20&c=Puxjm4Bg5lkELXF2dwDDE_Tfbbtgwlr2bxAWzGHBibE=',
-        created_by: {
-          id: 'huynhuyn',
-        },
-      }
-      this.commentList.push(newComment);
-      this.search = '';
-    },
-    likePostFriend() {
-      if (!this.like) {
-        this.like = true
-      } else {
-        this.like = false
-      }
-    },
-    savePost() {
-      if (!this.save) {
-        this.save = true
-      } else {
-        this.save = false
+    methods: {
+      convertedLikes(like) {
+        if(like >=1000000){
+          return ((like /1000000).toFixed(1) + 'M')
+        }else if(1000 < like < 1000000){
+          return ((like /1000).toFixed(1) + 'k')
+        }
+        return like;
+      },
+      countLikes(like){
+        if(like!== undefined){
+          const number = like;
+          return number.toLocaleString() ;
+        }
+       return 0
+      },
+      convertedComments(comment){
+        if(comment >=1000000){
+          return ((comment /1000000).toFixed(1) + 'M')
+        }else if(1000 < comment < 1000000){
+          return ((comment /1000).toFixed(1) + 'k')
+        }
+        return comment;
+      },
+      openShare() {
+        this.isOpenShareModal = true
+      },
+      openSuggest() {
+        this.isOpenSuggestModal = true
+      },
+      cancelModal() {
+        this.isOpenSuggestModal = false
+      },
+      reportlModal() {
+        this.isOpenReportModal = true
+      },
+      informationIconLarge(img) {
+        this.isOpenCommnetModal = true
+        this.currentImage = img.largeImg
+        // this.currentImage = img.smallImages
+      },
+      informationIconSmall(img) {
+        this.isOpenCommnetModal = true
+        this.currentImage = img
+      },
+      onEnter() {
+        const newComment = {
+          contentComment: this.search,
+          img: 'https://media.istockphoto.com/id/531162849/vi/anh/ng%C3%B4i-sao-nh%C3%AD.jpg?s=2048x2048&w=is&k=20&c=Puxjm4Bg5lkELXF2dwDDE_Tfbbtgwlr2bxAWzGHBibE=',
+          created_by: {
+            id: 'huynhuyn',
+          },
+        }
+        this.commentList.push(newComment);
+        this.search = '';
+      },
+      likePostFriend() {
+        if (!this.like) {
+          this.like = true
+        } else {
+          this.like = false
+        }
+      },
+      savePost() {
+        if (!this.save) {
+          this.save = true
+        } else {
+          this.save = false
+        }
       }
     }
   }
-
-
-}
 </script>
+<style lang="scss">
+.no-padding-modal {
+  .el-dialog__body {
+    padding: 0;
+  }
+}
+.no-padding-header {
+  .el-dialog__header {
+    padding: 0;
+  }
+}
+</style>
 <style scoped lang="scss">
+.small-images-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.item-icon-wrapper {
+  display: grid;
+  grid-template-columns: 33% 1fr;
+
+  &.item-icon-wrapper-right {
+    grid-template-columns: 1fr 33%;
+  }
+}
+
 .modal-suggest {
   width: 700px;
   margin: 0 auto;
 }
-.item{
+
+.item {
   display: flex;
   align-items: center;
   padding-bottom: 30px;
   border-bottom: 1px solid grey;
 }
+
+.favorite-icon-con {
+  display: flex;
+  gap: 30px;
+  margin: 0 auto;
+}
+
 .wrapper-report {
   width: 900px;
   margin: 0 auto;
@@ -428,6 +689,9 @@ export default {
 .wrapper-comment {
   padding-top: 30px;
   padding-left: 10px;
+  flex: 1;
+  min-height: 1px;
+  overflow: auto;
 }
 
 .comment-modal {
@@ -456,11 +720,11 @@ export default {
 }
 
 .three-cham {
-  display: none;
+  opacity: 0;
 }
 
 .comments:hover .three-cham {
-  display: block;
+  opacity: 1;
 }
 
 .created {
@@ -489,8 +753,11 @@ export default {
 }
 
 .comment-me {
-  display: flex;
   gap: 5px;
+  height: 70vh;
+  min-height: 500px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .update {
@@ -509,8 +776,10 @@ export default {
 }
 
 .show-comments {
-  width: 50%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 1px;
 }
 
 /*.wrapper-comment{*/
@@ -541,9 +810,8 @@ export default {
 }
 
 .img-post {
-  width: 400px;
-  height: 550px;
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .name-personal-post:hover {
@@ -559,9 +827,7 @@ export default {
 }
 
 .like-comment {
-  position: absolute;
   width: 100%;
-  bottom: 0px;
 }
 
 .name-personal-post {
@@ -660,33 +926,42 @@ felling-icon {
   transition: opacity 0.2s ease-in-out;
   display: flex;
   align-items: center;
-  gap: 7px;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.item-icon {
-  position: relative;
-  cursor: pointer;
-  &:hover {
-    background: rgba(0,0,0,0.6);
-    .favorite-icon {
-      opacity: 1;
+.item-icon-wrapper {
+  .item-icon {
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.6);
+
+      .favorite-icon {
+        opacity: 1;
+      }
     }
   }
 }
 
 .icon {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  //display: grid;
+  //grid-template-columns: repeat(3, 1fr);
   overflow: auto;
   flex: 1;
   min-width: 1px;
   padding: 0 120px;
-
 }
 
 .icon img {
   padding: 2px;
+  height: 100%;
+}
+@media (max-width: 768px) {
+  .icon{
+    padding: 24px;
+  }
+
 }
 </style>

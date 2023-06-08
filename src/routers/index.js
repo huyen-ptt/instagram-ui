@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HomePage from '@/pages/HomePage.vue'; // HomePage lúc này là component
+// import HomePage from '@/pages/HomePage.vue'; // HomePage lúc này là component
 import LoginPage from '@/pages/LoginPage.vue';
 import RegisterPage from '@/pages/RegisterPage.vue';
 import CollectionDetailPage from '@/pages/CollectionDetailPage.vue';
@@ -21,6 +21,7 @@ import ReelsPage from "@/pages/ReelsPage.vue";
 import PersonalPage from "@/pages/PersonalPage.vue";
 import SavedPage from "@/pages/instagram/SavedPage.vue";
 import TaggetPage from "@/pages/instagram/TaggetPage.vue";
+import MessengerInstagram from "@/pages/MessengerInstagram.vue";
 Vue.use(Router)
 
 export default new Router({
@@ -28,8 +29,8 @@ export default new Router({
     routes: [ // bao gồm danh sách route
         {
             path: '/', ///path của route
-            name: 'HomePage', // tên route
-            component: HomePage // component route sử dụng
+            name: 'InstagramPage', // tên route
+            component: InstagramPage // component route sử dụng
         },
         {
             path: '/login',
@@ -67,12 +68,17 @@ export default new Router({
             component : InstagramPage
         },
         {
+            path: '/messengerinstagram',
+            name: 'MessengerInstagram' ,
+            component : MessengerInstagram
+        },
+        {
             path: '/test',
             name: 'TestPage' ,
             component : TestPage
         },
         {
-            path: '/Messenger',
+            path: '/messenger',
             name: 'MessengerPage' ,
             component : MessengerPage
         },
@@ -92,7 +98,7 @@ export default new Router({
             component : SearchResultCountry
         },
         {
-            path: '/explorePage',
+            path: '/explore',
             name: 'ExplorePage' ,
             component : ExplorePage
         },
@@ -133,5 +139,6 @@ export default new Router({
                 },
             ]
         },
-    ]
+    ],
+
 })

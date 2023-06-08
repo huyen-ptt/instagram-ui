@@ -14,3 +14,34 @@
 .custom-modal .el-dialog__header {
     text-align: center;
 }
+.el-dialog.comment-modal{
+    border-radius: 20px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+.comment-modal .el-dialog__header{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    border-bottom: 1px solid grey;
+    padding: 10px 20px;
+}
+.comment-modal .el-dialog__body{
+    display: flex;
+   flex-direction: column;
+}
+.comment-modal .show-comments{
+    display: flex;
+    flex-direction: column;
+}
+.comment-modal .coments{
+    flex: 1;
+    min-width: 1px;
+}
+@media (max-width: 768px) {
+    .el-dialog.no-padding-modal{
+        width: 100%;
+    }
+}

@@ -142,7 +142,7 @@
         </div>
       </div>
     </el-dialog>
-    <el-dialog title=""
+    <el-dialog custom-class="no-padding-modal no-padding-header"
                :visible.sync="isOpenCommnetModal">
       <div class="comment-me">
         <div>
@@ -190,12 +190,6 @@
                 {{ item.contentComment }}
               </div>
             </div>
-            <!--            <div>-->
-            <!--              <i @click="toggleLike(comment)" class="fa" :class="{ 'fa-heart': comment.is_like, 'fa-heart-o': !comment.is_like }"></i>-->
-            <!--              &lt;!&ndash;                      <p>{{ comment.is_like }}</p>&ndash;&gt;-->
-            <!--              &lt;!&ndash;                      <i v-if="comment" class="fa-regular fa-heart love"></i>&ndash;&gt;-->
-            <!--              &lt;!&ndash;                      <i v-else class="fa-sharp fa-solid fa-heart love"></i>&ndash;&gt;-->
-            <!--            </div>-->
           </div>
           <div class="comments-modal">
             <div>
@@ -255,7 +249,7 @@
       </div>
     </el-dialog>
     <el-dialog title="Share"
-               width="400px"
+               width="600px"
                custom-class="custom-modal"
                :visible.sync="isOpenShareModal">
       <div>
@@ -277,7 +271,7 @@
                 <div class="craeted-time">Thanh Huyen</div>
               </div>
             </div>
-            <input type="radio">
+            <input type="checkbox">
           </div>
           <div class="modall">
             <div class="title-personal-post">
@@ -288,7 +282,7 @@
                 <div class="craeted-time">Nguyen Anh</div>
               </div>
             </div>
-            <input type="radio">
+            <input type="checkbox">
           </div>
           <div class="modall">
             <div class="title-personal-post ">
@@ -299,7 +293,7 @@
                 <div class="craeted-time">Ngoc Huyen</div>
               </div>
             </div>
-            <input type="radio">
+            <input type="checkbox">
           </div>
         </div>
         <button class="send">Send</button>
@@ -407,12 +401,24 @@ export default {
         this.like = false
       }
     },
-    toggleLike(comment) {
+    toggleLike (comment) {
       comment.is_like = !comment.is_like;
     }
   },
 }
 </script>
+<style lang="scss">
+.no-padding-modal {
+  .el-dialog__body {
+    padding: 0;
+  }
+}
+.no-padding-header {
+  .el-dialog__header {
+    padding: 0;
+  }
+}
+</style>
 <style scoped>
 .fa {
   font-size: 20px;
@@ -422,6 +428,7 @@ export default {
 .avt-personal-post:hover {
   cursor: pointer;
 }
+
 
 .avt-personal-post {
   width: 42px;
