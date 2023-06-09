@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <MenuInstagram/>
+    <HeaderInstagramDt/>
     <div class="home-page">
       <div class="feeds-content">
         <div class="home">
@@ -108,6 +109,7 @@
         <SuggestionsPage/>
       </div>
     </div>
+    <MenuInstagramDt/>
     <el-dialog title=""
                :visible.sync="isOpenInformationModal">
       <div>
@@ -306,6 +308,8 @@ import MenuInstagram from '@/components/instagram/MenuInstagram.vue';
 import ListFriendsOnline from '@/components/instagram/ListFriendsOnline.vue';
 // import HomePageInstagram from "@/components/instagram/HomePageIstagram.vue";
 import SuggestionsPage from "@/components/instagram/SuggestionsPage.vue";
+import MenuInstagramDt from "@/components/instagram/MenuInstagramDt.vue";
+import HeaderInstagramDt from "@/components/instagram/HeaderInstagramDt.vue";
 
 export default {
   components: {
@@ -313,6 +317,8 @@ export default {
     MenuInstagram,
     ListFriendsOnline,
     SuggestionsPage,
+    MenuInstagramDt,
+    HeaderInstagramDt
   },
   data() {
     return {
@@ -711,5 +717,15 @@ export default {
   width: 100%;
   height: 100vh;
   background: #FFFFFF;
+}
+@media (max-width: 400px) {
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
+  .home-page{
+    padding: 10px 0;
+  }
+
 }
 </style>

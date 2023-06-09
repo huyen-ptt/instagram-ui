@@ -20,14 +20,6 @@
       <img class="avt-friend" src="@/assets/avt (4).png"/>
       <div class="name-friend">Hzzz</div>
     </div>
-<!--    <div class="circle-avt">-->
-<!--      <img class="avt-friend" src="@/assets/avt (3).png"/>-->
-<!--      <div class="name-friend">Jeeny</div>-->
-<!--    </div>-->
-<!--    <div class="circle-avt">-->
-<!--      <img class="avt-friend" src="@/assets/avt (2).png"/>-->
-<!--      <div class="name-friend">Jeeny</div>-->
-<!--    </div>-->
   </div>
 </template>
 <script></script>
@@ -56,5 +48,14 @@
 }
 .avt-friend {
   padding-bottom: 5px;
+}
+@media (max-width: 400px) {
+  .circle-avt{
+    width: 56px;
+    height: 56px;
+  }
+  .header{
+    justify-content: space-around;
+  }
 }
 </style>

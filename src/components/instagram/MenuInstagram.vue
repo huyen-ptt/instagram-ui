@@ -152,7 +152,6 @@ export default {
   //   this.onClick(); // gọi hàm handleClick ở đây
   //   // next(); // nếu không muốn xử lý gì thêm thì gọi hàm next()
   // }
-
 }
 </script>
 <style scoped>
@@ -236,6 +235,11 @@ export default {
   }
 
   .icon-mt {
+    display: none;
+  }
+}
+@media (max-width: 400px) {
+  .menu{
     display: none;
   }
 }
