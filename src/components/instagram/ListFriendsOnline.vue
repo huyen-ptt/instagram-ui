@@ -49,7 +49,7 @@
 .avt-friend {
   padding-bottom: 5px;
 }
-@media (max-width: 414px) {
+@media (max-width: 415px) {
   .circle-avt{
     width: 56px;
     height: 56px;

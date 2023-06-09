@@ -64,6 +64,7 @@
         </div>
       </div>
     </div>
+    <MenuInstagramDt/>
     <el-dialog title=""
                :visible.sync="isOpenShareModal">
       <div>
@@ -180,10 +181,11 @@
 </template>
 <script>
 import MenuInstagram from "@/components/instagram/MenuInstagram.vue";
-
+import MenuInstagramDt from "@/components/instagram/MenuInstagramDt.vue";
 export default {
   components: {
-    MenuInstagram
+    MenuInstagram,
+    MenuInstagramDt
   },
   data() {
     return {
@@ -538,5 +540,23 @@ export default {
     height: 602px;
   }
 
+}
+@media (max-width: 415px) {
+  .video{
+    padding: 0;
+  }
+  .item-video .thanh-video{
+    width: 100%;
+    border-radius: 0;
+  }
+  .emotional-interaction[data-v-0d389458] {
+    position: absolute;
+    bottom: 49px;
+    right: 8px;
+  }
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>

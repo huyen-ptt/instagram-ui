@@ -45,3 +45,16 @@
         width: 100%;
     }
 }
+@media (max-width: 415px) {
+    .el-dialog.no-padding-modal{
+        width: 90%;
+    }
+    .el-dialog.modal-moremenu{
+        margin: 0;
+        width: 42%;
+        border-radius: 15px;
+    }
+    .modal-moremenu .el-dialog__header{
+        padding: 0;
+    }
+}

@@ -1,6 +1,16 @@
 <template>
   <div class="container">
     <MenuInstagram/>
+    <div class="o-nhap">
+      <svg aria-label="Search" class="x1lliihq x1n2onr6 icon-search" color="rgb(142, 142, 142)" fill="rgb(142, 142, 142)"
+           height="16" role="img" viewBox="0 0 24 24" width="16"><title>Search</title>
+        <path d="M19 10.5A8.5 8.5 0 1 1 10.5 2a8.5 8.5 0 0 1 8.5 8.5Z" fill="none" stroke="currentColor"
+              stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+        <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              x1="16.511" x2="22" y1="16.511" y2="22"></line>
+      </svg>
+      <input class="search" type="text" placeholder="Search..."/>
+    </div>
     <div class="icon">
       <div v-for="(imgGroup, index) in imgList"
            :key="index"
@@ -62,6 +72,7 @@
         </div>
       </div>
     </div>
+    <MenuInstagramDt/>
     <el-dialog custom-class="no-padding-modal no-padding-header"
                :show-close="false"
                :visible.sync="isOpenCommnetModal">
@@ -77,7 +88,7 @@
                 <div class="title-personal-post">
                   <img class="avt-personal-post"
                        :src="currentImage?.creator.avt"/>
-                  <div class="name-personal-post">{{currentImage?.creator.name}}</div>
+                  <div class="name-personal-post">{{ currentImage?.creator.name }}</div>
                 </div>
                 <div style="padding-bottom: 10px;color: rgb(0 149 246);font-weight: 600;cursor: pointer">
                   follow
@@ -303,10 +314,12 @@
 </template>
 <script>
 import MenuInstagram from "@/components/instagram/MenuInstagram.vue";
+import MenuInstagramDt from "@/components/instagram/MenuInstagramDt.vue";
 
 export default {
   components: {
-    MenuInstagram
+    MenuInstagram,
+    MenuInstagramDt
   },
   data() {
     return {
@@ -317,7 +330,7 @@ export default {
             img: 'https://kenh14cdn.com/2016/k2-2-1480327709662.jpg',
             like_count: 1805994,
             comment_count: 20700,
-            creator:{
+            creator: {
               name: 'hannar',
               avt: 'https://images.unsplash.com/photo-1593601680767-3a289f3761aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2013&q=80'
             }
@@ -329,7 +342,7 @@ export default {
                   img: 'https://images.unsplash.com/photo-1611200945005-403b70229452?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
                   like_count: 1070,
                   comment_count: 2400,
-                  creator:{
+                  creator: {
                     name: 'ngnh_hbf',
                     avt: 'https://images.unsplash.com/photo-1581508604398-60e52b0af39c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
                   }
@@ -339,7 +352,7 @@ export default {
                   img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png',
                   like_count: 1500,
                   comment_count: 2600,
-                  creator:{
+                  creator: {
                     name: 'udui.dg',
                     avt: 'https://images.unsplash.com/photo-1611864444643-457fb0e29009?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
                   }
@@ -349,7 +362,7 @@ export default {
                   img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/gliter-cat-2zz3v_025742551.png',
                   like_count: 1070,
                   comment_count: 2030,
-                  creator:{
+                  creator: {
                     name: 'hnuhe.hf',
                     avt: 'https://images.unsplash.com/photo-1586723815262-83713dcfbfa1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80'
                   }
@@ -359,7 +372,7 @@ export default {
                   img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/bird-crown-emmyy_025904055.png',
                   like_count: 1020,
                   comment_count: 2400,
-                  creator:{
+                  creator: {
                     name: 'thah_hueyn',
                     avt: 'https://images.unsplash.com/photo-1445053023192-8d45cb66099d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
                   }
@@ -369,9 +382,10 @@ export default {
         {
           largeImg: {
             id: 6,
-            img: 'https://images.unsplash.com/photo-1581508604398-60e52b0af39c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80', like_count: 1300,
+            img: 'https://images.unsplash.com/photo-1581508604398-60e52b0af39c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80',
+            like_count: 1300,
             comment_count: 2040,
-            creator:{
+            creator: {
               name: 'hahah_hd',
               avt: 'https://images.unsplash.com/photo-1611200945005-403b70229452?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
             }
@@ -380,9 +394,10 @@ export default {
               [
                 {
                   id: 7,
-                  img: 'https://images.unsplash.com/photo-1580529642221-eb86b38636ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80', like_count: 4000,
+                  img: 'https://images.unsplash.com/photo-1580529642221-eb86b38636ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80',
+                  like_count: 4000,
                   comment_count: 2000,
-                  creator:{
+                  creator: {
                     name: 'bicngoc',
                     avt: 'https://images.unsplash.com/photo-1580529642221-eb86b38636ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
                   }
@@ -392,7 +407,7 @@ export default {
                   img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png',
                   like_count: 6000,
                   comment_count: 2000,
-                  creator:{
+                  creator: {
                     name: 'cici.hn',
                     avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png'
                   }
@@ -402,7 +417,7 @@ export default {
                   img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/gliter-cat-2zz3v_025742551.png',
                   like_count: 5000,
                   comment_count: 2000,
-                  creator:{
+                  creator: {
                     name: 'hywe.hn',
                     avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png'
                   }
@@ -412,7 +427,7 @@ export default {
                   img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/bird-crown-emmyy_025904055.png',
                   like_count: 7000,
                   comment_count: 2000,
-                  creator:{
+                  creator: {
                     name: 'ha78qbd.hn',
                     avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png'
                   }
@@ -422,9 +437,10 @@ export default {
         {
           largeImg: {
             id: 11,
-            img: 'https://images.unsplash.com/photo-1609043239075-b84f30707c63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80', like_count: 1000,
+            img: 'https://images.unsplash.com/photo-1609043239075-b84f30707c63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80',
+            like_count: 1000,
             comment_count: 2000,
-            creator:{
+            creator: {
               name: 'ywusn.hn',
               avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png'
             }
@@ -435,7 +451,7 @@ export default {
                   id: 12,
                   img: 'https://kenh14cdn.com/2016/k2-2-1480327709662.jpg', like_count: 1000,
                   comment_count: 2000,
-                  creator:{
+                  creator: {
                     name: 'hihi.hn',
                     avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png'
                   }
@@ -445,7 +461,7 @@ export default {
                   img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png',
                   like_count: 1000,
                   comment_count: 2000,
-                  creator:{
+                  creator: {
                     name: 'luluy.hn',
                     avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png'
                   }
@@ -455,7 +471,7 @@ export default {
                   img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/gliter-cat-2zz3v_025742551.png',
                   like_count: 1000,
                   comment_count: 2000,
-                  creator:{
+                  creator: {
                     name: 'hazz.hds',
                     avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/gliter-cat-2zz3v_025742551.png'
                   }
@@ -465,7 +481,7 @@ export default {
                   img: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/bird-crown-emmyy_025904055.png',
                   like_count: 1000,
                   comment_count: 2000,
-                  creator:{
+                  creator: {
                     name: 'huynHuyn.hn',
                     avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png'
                   }
@@ -505,78 +521,78 @@ export default {
       currentImage: null
     }
   },
-    methods: {
-      convertedLikes(like) {
-        if(like >=1000000){
-          return ((like /1000000).toFixed(1) + 'M')
-        }else if(1000 < like < 1000000){
-          return ((like /1000).toFixed(1) + 'k')
-        }
-        return like;
-      },
-      countLikes(like){
-        if(like!== undefined){
-          const number = like;
-          return number.toLocaleString() ;
-        }
-       return 0
-      },
-      convertedComments(comment){
-        if(comment >=1000000){
-          return ((comment /1000000).toFixed(1) + 'M')
-        }else if(1000 < comment < 1000000){
-          return ((comment /1000).toFixed(1) + 'k')
-        }
-        return comment;
-      },
-      openShare() {
-        this.isOpenShareModal = true
-      },
-      openSuggest() {
-        this.isOpenSuggestModal = true
-      },
-      cancelModal() {
-        this.isOpenSuggestModal = false
-      },
-      reportlModal() {
-        this.isOpenReportModal = true
-      },
-      informationIconLarge(img) {
-        this.isOpenCommnetModal = true
-        this.currentImage = img.largeImg
-        // this.currentImage = img.smallImages
-      },
-      informationIconSmall(img) {
-        this.isOpenCommnetModal = true
-        this.currentImage = img
-      },
-      onEnter() {
-        const newComment = {
-          contentComment: this.search,
-          img: 'https://media.istockphoto.com/id/531162849/vi/anh/ng%C3%B4i-sao-nh%C3%AD.jpg?s=2048x2048&w=is&k=20&c=Puxjm4Bg5lkELXF2dwDDE_Tfbbtgwlr2bxAWzGHBibE=',
-          created_by: {
-            id: 'huynhuyn',
-          },
-        }
-        this.commentList.push(newComment);
-        this.search = '';
-      },
-      likePostFriend() {
-        if (!this.like) {
-          this.like = true
-        } else {
-          this.like = false
-        }
-      },
-      savePost() {
-        if (!this.save) {
-          this.save = true
-        } else {
-          this.save = false
-        }
+  methods: {
+    convertedLikes(like) {
+      if (like >= 1000000) {
+        return ((like / 1000000).toFixed(1) + 'M')
+      } else if (1000 < like < 1000000) {
+        return ((like / 1000).toFixed(1) + 'k')
+      }
+      return like;
+    },
+    countLikes(like) {
+      if (like !== undefined) {
+        const number = like;
+        return number.toLocaleString();
+      }
+      return 0
+    },
+    convertedComments(comment) {
+      if (comment >= 1000000) {
+        return ((comment / 1000000).toFixed(1) + 'M')
+      } else if (1000 < comment < 1000000) {
+        return ((comment / 1000).toFixed(1) + 'k')
+      }
+      return comment;
+    },
+    openShare() {
+      this.isOpenShareModal = true
+    },
+    openSuggest() {
+      this.isOpenSuggestModal = true
+    },
+    cancelModal() {
+      this.isOpenSuggestModal = false
+    },
+    reportlModal() {
+      this.isOpenReportModal = true
+    },
+    informationIconLarge(img) {
+      this.isOpenCommnetModal = true
+      this.currentImage = img.largeImg
+      // this.currentImage = img.smallImages
+    },
+    informationIconSmall(img) {
+      this.isOpenCommnetModal = true
+      this.currentImage = img
+    },
+    onEnter() {
+      const newComment = {
+        contentComment: this.search,
+        img: 'https://media.istockphoto.com/id/531162849/vi/anh/ng%C3%B4i-sao-nh%C3%AD.jpg?s=2048x2048&w=is&k=20&c=Puxjm4Bg5lkELXF2dwDDE_Tfbbtgwlr2bxAWzGHBibE=',
+        created_by: {
+          id: 'huynhuyn',
+        },
+      }
+      this.commentList.push(newComment);
+      this.search = '';
+    },
+    likePostFriend() {
+      if (!this.like) {
+        this.like = true
+      } else {
+        this.like = false
+      }
+    },
+    savePost() {
+      if (!this.save) {
+        this.save = true
+      } else {
+        this.save = false
       }
     }
   }
+}
 </script>
 <style lang="scss">
 .no-padding-modal {
@@ -584,6 +600,7 @@ export default {
     padding: 0;
   }
 }
+
 .no-padding-header {
   .el-dialog__header {
     padding: 0;
@@ -591,6 +608,10 @@ export default {
 }
 </style>
 <style scoped lang="scss">
+.search {
+  display: none;
+}
+
 .small-images-wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -958,10 +979,41 @@ felling-icon {
   padding: 2px;
   height: 100%;
 }
+
 @media (max-width: 768px) {
-  .icon{
+  .icon {
     padding: 24px;
   }
+  .search {
+    display: none;
+  }
+}
 
+@media (max-width: 415px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 32px;
+  }
+  .search {
+    display: block;
+    padding: 6px 44px;
+    width: 100%;
+    color: rgb(115, 115, 115);
+    background: rgb(239, 239, 239);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 30px;
+    border-radius: 10px;
+    border: 0;
+  }
+  .icon-search{
+    position: absolute;
+    top:14px;
+    left: 18px;
+  }
+  .o-nhap{
+    position: relative;
+  }
 }
 </style>

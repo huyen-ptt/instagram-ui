@@ -21,6 +21,7 @@ import ReelsPage from "@/pages/ReelsPage.vue";
 import PersonalPage from "@/pages/PersonalPage.vue";
 import SavedPage from "@/pages/instagram/SavedPage.vue";
 import TaggetPage from "@/pages/instagram/TaggetPage.vue";
+import ChatMessengerIstagram from "@/pages/instagram/ChatMessengerIstagram.vue";
 import MessengerInstagram from "@/pages/MessengerInstagram.vue";
 Vue.use(Router)
 
@@ -71,6 +72,11 @@ export default new Router({
             path: '/messengerinstagram',
             name: 'MessengerInstagram' ,
             component : MessengerInstagram
+        },
+        {
+            path: '/chatIstagram',
+            name: 'ChatMessengerIstagram' ,
+            component : ChatMessengerIstagram
         },
         {
             path: '/test',

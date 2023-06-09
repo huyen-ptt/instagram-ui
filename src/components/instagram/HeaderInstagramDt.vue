@@ -35,7 +35,7 @@ export default {
 
 }
 
-@media (max-width: 414px) {
+@media (max-width: 415px) {
   .header {
     display: flex;
     margin-bottom: 0;

@@ -238,7 +238,7 @@ export default {
     display: none;
   }
 }
-@media (max-width: 414px) {
+@media (max-width: 415px) {
   .menu{
     display: none;
   }

@@ -15,7 +15,7 @@
       </svg>
       <div class="name-menu">Create</div>
     </a>
-    <el-dialog title=""
+    <el-dialog custom-class="modal-moremenu"
                :visible.sync="isOpenModal"
     style="width: 1000px;margin: 0 auto;height: 800px">
       <div>
@@ -112,7 +112,7 @@ export default {
   color: rgb(0, 0, 0);
   font-weight: 400;
 }
-@media (max-width: 414px) {
+@media (max-width: 415px) {
 .name-menu{
   display: none;
 }

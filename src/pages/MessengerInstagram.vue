@@ -5,6 +5,9 @@
       <div class="home-messenger">
         <div class="conversation">
           <div class="footer-conversation">
+            <router-link to="/">
+              <i class="fa-solid fa-angle-left next"></i>
+            </router-link>
             <div class="name">
               <div class="name-me">Huyn.huyn</div>
               <svg aria-label="Down chevron icon" class="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="12"
@@ -206,7 +209,6 @@
             </svg>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -217,7 +219,7 @@ import MenuInstagram from "@/components/instagram/MenuInstagram.vue";
 
 export default {
   components: {
-    MenuInstagram
+    MenuInstagram,
   },
   data() {
     return {
@@ -362,7 +364,7 @@ export default {
     },
     enterSearch() {
       const timeStamp = new Date().getTime() / 1000;
-      if(this.changeContent === true){
+      if (this.changeContent === true) {
         const newChatMe = {
           content: this.search,
           created_time: timeStamp,
@@ -370,7 +372,7 @@ export default {
         }
         this.messageList.push(newChatMe)
         this.search = ''
-      }else{
+      } else {
         const newChatYou = {
           content: this.search,
           created_time: timeStamp,
@@ -399,33 +401,43 @@ export default {
   height: 100vh;
   overflow: auto;
 }
-.feeling-right{
+
+.feeling-right {
   position: absolute;
   right: -107px;
-  top:17px;
+  top: 17px;
   opacity: 0;
 }
-.chat-item{
+
+.chat-item {
   margin-bottom: 10px;
 }
-.feeling-left{
+.next{
+  display: none;
+}
+.feeling-left {
   position: absolute;
   left: -100px;
-  top:14px;
+  top: 14px;
   opacity: 0;
 }
-.chat-you:hover .feeling-right{
+
+.chat-you:hover .feeling-right {
   opacity: 1;
 }
-.chat-me:hover .feeling-left{
+
+.chat-me:hover .feeling-left {
   opacity: 1;
 }
-.feeling-right svg{
+
+.feeling-right svg {
   margin-right: 15px;
 }
-.feeling-left svg{
+
+.feeling-left svg {
   margin-right: 15px;
 }
+
 .chat-me {
   background: rgb(55, 151, 240);
   border-radius: 20px;
@@ -455,9 +467,11 @@ export default {
   padding: 7px 12px;
   position: relative;
 }
-.chat{
+
+.chat {
   padding: 0 14px;
 }
+
 .wrapper-icon {
   position: absolute;
   top: 14px;
@@ -481,8 +495,7 @@ export default {
   width: 100%;
   padding: 15px 58px;
   border-radius: 40px;
-  border: 1px solid rgb(219, 219, 219)
-;
+  border: 1px solid rgb(219, 219, 219);
 }
 
 .icon {
@@ -559,9 +572,11 @@ export default {
   margin: 10px 0;
   cursor: pointer;
 }
-.item-friends:hover{
+
+.item-friends:hover {
   background: rgb(239, 239, 239);
 }
+
 .new-message {
   cursor: pointer;
 }
@@ -663,25 +678,74 @@ export default {
   flex: 1;
   min-height: 1px;
 }
+
 @media (max-width: 768px) {
-  .name{
+  .name {
     display: none;
   }
-  .title-messenger{
+
+  .title-messenger {
     display: none;
   }
-  .bao-content{
+
+  .bao-content {
     display: none;
   }
-  .avt-friend{
-    padding-bottom:0 ;
+
+  .avt-friend {
+    padding-bottom: 0;
   }
-  .home-messenger{
+  .next{
+    display: none;
+  }
+  .home-messenger {
     width: 110px;
   }
-  .footer-conversation{
+
+  .footer-conversation {
     margin: 0 auto;
     padding: 36px 24px 0px;
+  }
+}
+
+@media (max-width: 415px) {
+  .noi-dung {
+    display: none;
+  }
+
+  .name {
+    display: block;
+  }
+
+  .bao-content {
+    display: block;
+  }
+
+  .home-messenger {
+    width: 100%;
+    border-right: 0;
+  }
+  .next{
+    display: block;
+    font-size: 24px;
+    color: black;
+  }
+  .router-link-active{
+    text-decoration: none;
+  }
+  .footer-conversation {
+    margin: 0;
+    padding:10px 16px ;
+    border-bottom: 1px solid gainsboro;
+  }
+  .name{
+    display: flex;
+    gap:10px;
+    align-items: center;
+  }
+  .name-me{
+    font-size: 16px;
+    font-weight: 600;
   }
 }
 </style>
