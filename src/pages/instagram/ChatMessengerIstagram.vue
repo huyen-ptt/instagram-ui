@@ -1,9 +1,12 @@
 <template>
-  <div>
+  <div class="container">
     <div class="noi-dung">
       <div class="bao-noi-dung">
         <div class="header-noi-dung">
           <div class="item-friends">
+            <router-link to="/messengerinstagram">
+              <i class="fa-solid fa-angle-left next"></i>
+            </router-link>
             <div>
               <img class="avt"
                    src="https://images.unsplash.com/photo-1580908343124-72e0a786c588?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1795&q=80">
@@ -160,7 +163,135 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data(){
+    return{
+      search: '',
+      changeContent: true,
+      messageList: [
+        {
+          id: 1,
+          content: 'Ăn cơm chưa',
+          created_time: 1680872373,
+          created_by: {
+            id: 'Phạm THị Hoa',
+            avatar: 'https://images.unsplash.com/photo-1580908343124-72e0a786c588?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1795&q=80',
+          },
+          is_me: false
+        },
+        {
+          id: 2,
+          content: 'Chưa',
+          created_time: 1680872373,
+          created_by: {
+            id: 'Huyeenf',
+            avatar: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+          },
+          is_me: true
+        },
+        {
+          id: 3,
+          content: 'Làm gì à',
+          created_time: 1680872373,
+          created_by: {
+            id: 'Huyeenf',
+            avatar: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+          },
+          is_me: true
+        },
+        {
+          id: 4,
+          content: 'Đi uống nước không',
+          created_time: 1680872373,
+          created_by: {
+            id: 'Phạm Thị Hoa',
+            avatar: 'https://images.unsplash.com/photo-1580908343124-72e0a786c588?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1795&q=80',
+          },
+          is_me: false
+        },
+        {
+          id: 5,
+          content: 'Đi',
+          created_time: 1680872373,
+          created_by: {
+            id: 'Huyeenf',
+            avatar: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+          },
+          is_me: true
+        },
+        {
+          id: 6,
+          content: 'Mấy giờ',
+          created_time: 1680872373,
+          created_by: {
+            id: 'Phạm Thị Hoa',
+            avatar: 'https://images.unsplash.com/photo-1580908343124-72e0a786c588?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1795&q=80',
+          },
+          is_me: false
+        },
+        {
+          id: 7,
+          content: '7h',
+          created_time: 1680872373,
+          created_by: {
+            id: 'Huyeenf',
+            avatar: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+          },
+          is_me: true
+        },
+      ]
+    }
+
+  },
+  methods:{
+    getClass(is_me) {
+      if (is_me) {
+        return 'chat-me'
+      }
+      return 'chat-you'
+    },
+    enterSearch() {
+      const timeStamp = new Date().getTime() / 1000;
+      if (this.changeContent === true) {
+        const newChatMe = {
+          content: this.search,
+          created_time: timeStamp,
+          is_me: true,
+        }
+        this.messageList.push(newChatMe)
+        this.search = ''
+      } else {
+        const newChatYou = {
+          content: this.search,
+          created_time: timeStamp,
+          is_me: false,
+          created_by: {
+            id: 'Phạm Thị Hoa',
+            avatar: 'https://images.unsplash.com/photo-1580908343124-72e0a786c588?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1795&q=80',
+          },
+        }
+        this.messageList.push(newChatYou)
+        this.search = ''
+      }
+    }
+  }
+}
+</script>
 <style scoped>
+.container{
+  background: white;
+  width: 100%;
+  height: 100%;
+}
+.next{
+  font-size: 24px;
+}
+.icon {
+  position: absolute;
+  top: 14px;
+  left: 23px;
+}
 .noi-dung {
   display: flex;
   flex: 1;
@@ -191,5 +322,176 @@
   line-height: 18px;
   color: black;
   padding-bottom: 5px;
+}
+.content-friend {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgb(115, 115, 115);
+}
+.toolbar svg {
+  margin-right: 13px;
+  cursor: pointer;
+}
+.toolbar{
+  display: flex;
+  align-items: center;
+  gap:10px;
+}
+.bao-contents {
+  flex: 1;
+  min-height: 1px;
+  overflow: auto;
+}
+.user-friend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 20px;
+}
+.chat {
+  padding: 0 14px;
+}
+.chat-item {
+  margin-bottom: 10px;
+}
+.avt {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+}
+.name-friends {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: black;
+  padding-bottom: 5px;
+}
+.content-friend {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgb(115, 115, 115);
+}
+.user-friend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 20px;
+}
+.user-avt {
+  width: 96px;
+  height: 96px;
+  border-radius: 999px;
+  margin: 16px;
+}
+.user-name {
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 25px;
+  margin-bottom: 4px;
+}
+.user-nickname {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgb(115, 115, 115);
+}
+.btn-profile {
+  margin: 24px 32px;
+  padding: 9px 15px;
+  border-radius: 8px;
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-profile:hover {
+  background: rgb(219, 219, 219);
+}
+.chat-me {
+  background: rgb(55, 151, 240);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  width: max-content;
+  gap: 5px;
+  color: white;
+  font-size: 15px;
+  line-height: 20px;
+  padding: 7px 12px;
+  margin-bottom: 5px;
+  position: relative;
+}
+.chat-you {
+  display: flex;
+  align-items: center;
+  background: rgb(239, 239, 239);
+  border-radius: 20px;
+  width: max-content;
+  color: #383737;
+  gap: 5px;
+  font-size: 15px;
+  line-height: 20px;
+  padding: 7px 12px;
+  position: relative;
+}
+.feeling-right {
+  position: absolute;
+  right: -107px;
+  top: 17px;
+  opacity: 0;
+}
+.feeling-left {
+  position: absolute;
+  left: -100px;
+  top: 14px;
+  opacity: 0;
+}
+
+.chat-you:hover .feeling-right {
+  opacity: 1;
+}
+
+.chat-me:hover .feeling-left {
+  opacity: 1;
+}
+
+.feeling-right svg {
+  margin-right: 15px;
+}
+
+.feeling-left svg {
+  margin-right: 15px;
+}
+.o-nhap {
+  position: relative;
+  margin-top: 5px;
+  padding: 0 14px;
+  /*position: fixed;*/
+  /*bottom: 0;*/
+  /*width: 100%;*/
+}
+.nhap-tin-nhan {
+  width: 100%;
+  padding: 15px 58px;
+  border-radius: 40px;
+  border: 1px solid rgb(219, 219, 219);
+}
+.wrapper-icon {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+}
+
+.wrapper-icon svg {
+  margin-right: 15px;
 }
 </style>

@@ -48,9 +48,9 @@
             fill-rule="evenodd"></path>
       </svg>
     </router-link>
-    <div>
+    <router-link to="/personaldt">
       <img class="avt" src="@/assets/avt.png"/>
-    </div>
+    </router-link>
   </div>
 </template>
 <script>

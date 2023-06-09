@@ -36,7 +36,7 @@
             <div class="requests">Requests</div>
           </div>
           <div class="wrapper-friends">
-            <div v-for="(friend, index) in friendList"
+            <router-link to="/chatIstagram/1" v-for="(friend, index) in friendList"
                  :key="index"
                  class="item-friends">
               <div>
@@ -46,7 +46,7 @@
                 <div class="name-friends">{{ friend.name_friend }}</div>
                 <div class="content-friend">{{ friend.content }}</div>
               </div>
-            </div>
+            </router-link>
           </div>
         </div>
         <div class="content-messenger">
@@ -515,11 +515,6 @@ export default {
   border: 0;
   cursor: pointer;
 }
-
-.btn-profile:hover {
-  background: rgb(219, 219, 219);
-}
-
 .user-friend {
   display: flex;
   justify-content: center;
@@ -571,6 +566,7 @@ export default {
   padding: 8px 24px;
   margin: 10px 0;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .item-friends:hover {

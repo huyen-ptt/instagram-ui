@@ -20,9 +20,12 @@ import TestPage from "@/pages/TestPage.vue";
 import ReelsPage from "@/pages/ReelsPage.vue";
 import PersonalPage from "@/pages/PersonalPage.vue";
 import SavedPage from "@/pages/instagram/SavedPage.vue";
+import SavedDt from "@/pages/instagram/SavedDt.vue";
 import TaggetPage from "@/pages/instagram/TaggetPage.vue";
+import TaggetDt from "@/pages/instagram/TaggetDt.vue";
 import ChatMessengerIstagram from "@/pages/instagram/ChatMessengerIstagram.vue";
 import MessengerInstagram from "@/pages/MessengerInstagram.vue";
+import PersonalPageDt from  "@/pages/PersonalPageDt.vue";
 Vue.use(Router)
 
 export default new Router({
@@ -54,6 +57,16 @@ export default new Router({
             component: TaggetPage
         },
         {
+            path: '/saveddt',
+            name: 'SavedDt',
+            component: SavedDt
+        },
+        {
+            path: '/taggetdt',
+            name: 'TaggetDt',
+            component: TaggetDt
+        },
+        {
             path: '/collection/:id',
             name: 'CollectionDetailPage' ,
             component : CollectionDetailPage
@@ -74,7 +87,7 @@ export default new Router({
             component : MessengerInstagram
         },
         {
-            path: '/chatIstagram',
+            path: '/chatIstagram/:id',
             name: 'ChatMessengerIstagram' ,
             component : ChatMessengerIstagram
         },
@@ -117,6 +130,11 @@ export default new Router({
             path: '/personal',
             name: 'PersonalPage' ,
             component : PersonalPage
+        },
+        {
+            path: '/personaldt',
+            name: 'PersonalPageDt' ,
+            component : PersonalPageDt
         },
         {
             path: '/Chat/:id',
