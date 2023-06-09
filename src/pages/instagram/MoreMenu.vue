@@ -112,7 +112,7 @@ export default {
   color: rgb(0, 0, 0);
   font-weight: 400;
 }
-@media (max-width: 400px) {
+@media (max-width: 414px) {
 .name-menu{
   display: none;
 }

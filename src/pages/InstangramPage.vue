@@ -718,7 +718,7 @@ export default {
   height: 100vh;
   background: #FFFFFF;
 }
-@media (max-width: 400px) {
+@media (max-width: 414px) {
   .container{
     display: flex;
     flex-direction: column;
