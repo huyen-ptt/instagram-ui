@@ -251,8 +251,7 @@
       </div>
     </el-dialog>
     <el-dialog title="Share"
-               width="600px"
-               custom-class="custom-modal"
+               custom-class="custom-modal-share"
                :visible.sync="isOpenShareModal">
       <div>
         <div>

@@ -40,6 +40,10 @@
     flex: 1;
     min-width: 1px;
 }
+.el-dialog.custom-modal-share{
+    width: 600px;
+}
+
 @media (max-width: 768px) {
     .el-dialog.no-padding-modal{
         width: 100%;
@@ -56,5 +60,18 @@
     }
     .modal-moremenu .el-dialog__header{
         padding: 0;
+    }
+    .no-padding-modal.no-padding-header .show-comments{
+        width: 100%;
+    }
+    .el-dialog.custom-modal-share{
+        width: 90%;
+        border-radius: 15px;
+    }
+    .el-dialog.custom-modal-share .el-dialog__header{
+        padding: 0;
+    }
+    .el-dialog.comment-modal{
+        width: 100%;
     }
 }

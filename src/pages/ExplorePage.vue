@@ -73,7 +73,7 @@
       </div>
     </div>
     <MenuInstagramDt/>
-    <el-dialog custom-class="no-padding-modal no-padding-header"
+    <el-dialog custom-class="no-padding-modal no-padding-header comments"
                :show-close="false"
                :visible.sync="isOpenCommnetModal">
       <div class="comment-me">
@@ -202,7 +202,7 @@
         </div>
       </div>
     </el-dialog>
-    <el-dialog title=""
+    <el-dialog  custom-class="custom-modal-share"
                :visible.sync="isOpenShareModal">
       <div>
         <div>
@@ -1006,6 +1006,22 @@ felling-icon {
     line-height: 30px;
     border-radius: 10px;
     border: 0;
+  }
+  .wrapper-comment{
+    padding-left:5px ;
+  }
+  .avt-personal-post{
+    width: 30px;
+    height: 30px;
+  }
+  .name-personal-post{
+    font-size: 13px;
+    line-height: 14px;
+    color: rgb(38, 38, 38);
+    font-weight: 500;
+  }
+  .content-comment{
+    font-size: 12px;
   }
   .icon-search{
     position: absolute;

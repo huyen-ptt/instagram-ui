@@ -65,7 +65,7 @@
       </div>
     </div>
     <MenuInstagramDt/>
-    <el-dialog title=""
+    <el-dialog  custom-class="custom-modal-share"
                :visible.sync="isOpenShareModal">
       <div>
         <div>
@@ -150,7 +150,7 @@
                 </div>
                 <div>
                   <i @click="toggleTym(item)" class="fa fa-heart"
-                     :class="{ 'fa-sharp fa-solid ': item.tym_count, 'fa-regular': !item.tym_count }"></i>
+                     :class="{ 'fa-sharp fa-solid comment ': item.tym_count, 'fa-regular comment': !item.tym_count }"></i>
                   <div class="interactions">{{ tymComment(item.tym) }}</div>
                 </div>
               </div>
@@ -557,6 +557,15 @@ export default {
   .container{
     display: flex;
     flex-direction: column;
+  }
+  .comment-you{
+    padding: 12px 21px;
+  }
+  .fa-heart.comment {
+    font-size: 14px;
+  }
+  .reply {
+    font-size: 12px;
   }
 }
 </style>
