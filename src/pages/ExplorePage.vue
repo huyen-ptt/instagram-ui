@@ -982,9 +982,12 @@ felling-icon {
 
 @media (max-width: 768px) {
   .icon {
-    padding: 24px;
+    padding: 20px;
   }
   .search {
+    display: none;
+  }
+  .o-nhap{
     display: none;
   }
 }

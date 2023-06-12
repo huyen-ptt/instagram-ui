@@ -6,13 +6,15 @@
       <div class="feeds-content">
         <div class="home">
           <ListFriendsOnline/>
-          <div class="bao-personal-post">
+          <div v-for="(post,index) in postList"
+               :key="index"
+                   class="bao-personal-post">
             <div class="personal-post">
               <div class="title-personal-post">
                 <img @click="informationFriend"
                      class="avt-personal-post"
-                     src="../assets/avt-friend.png"/>
-                <div class="name-personal-post">ane.tdiuz</div>
+                     :src="post.avt"/>
+                <div class="name-personal-post">{{post.name}}</div>
                 <div class="craeted-time">5d</div>
               </div>
               <svg aria-label="More options" class="_ab6- three-cham" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)"
@@ -23,7 +25,7 @@
                 <circle cx="18" cy="12" r="1.5"></circle>
               </svg>
             </div>
-            <img class="post-picture" src="../assets/avt.jpg"/>
+            <img class="post-picture" :src="post.post"/>
             <div>
               <div class="emotional-interaction">
                 <div class="like-share">
@@ -182,14 +184,16 @@
               </div>
             </div>
           </div>
-          <div v-for="item in commentList"
-               :key="item.id"
-               class="person-comments">
-            <div class="title-personal-post">
-              <img class="avt-personal-post" :src="item.img"/>
-              <div class="interactive-friends">{{ item.created_by.id }}</div>
-              <div class="content-comment">
-                {{ item.contentComment }}
+          <div class="wrapper-comment">
+            <div v-for="item in commentList"
+                 :key="item.id"
+                 class="person-comments">
+              <div class="title-personal-post">
+                <img class="avt-personal-post" :src="item.img"/>
+                <div class="interactive-friends">{{ item.created_by.id }}</div>
+                <div class="content-comment">
+                  {{ item.contentComment }}
+                </div>
               </div>
             </div>
           </div>
@@ -321,6 +325,29 @@ export default {
   },
   data() {
     return {
+      postList: [
+        {
+          id: 1,
+          avt: 'https://images.unsplash.com/photo-1593601680767-3a289f3761aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2013&q=80',
+          name: 'ane.tdiuz',
+          created_at: 1686581516,
+          post: 'https://images.unsplash.com/photo-1611200945005-403b70229452?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
+        },
+        {
+          id: 2,
+          avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png',
+          name: 'hanna.huyn',
+          created_at: 1686581516,
+          post: 'https://images.unsplash.com/photo-1611864444643-457fb0e29009?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+        },
+        {
+          id: 3,
+          avt:'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/gliter-cat-2zz3v_025742551.png',
+          name: 'ngozzz.hihi',
+          created_at: 1686581516,
+          post:  'https://images.unsplash.com/photo-1586723815262-83713dcfbfa1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80'
+        }
+      ],
       commentList: [
         {
           id: 1,
@@ -329,7 +356,7 @@ export default {
           created_by: {
             id: 'naznaz.hhr',
           },
-          is_like: true
+          is_like: false
         },
         {
           id: 2,
@@ -338,7 +365,7 @@ export default {
           created_by: {
             id: 'ngocba.âhc',
           },
-          is_like: true
+          is_like: false
         }
       ],
       isOpenInformationModal: false,
@@ -455,8 +482,11 @@ export default {
 }
 
 .comment-me {
-  display: flex;
   gap: 5px;
+  height: 70vh;
+  min-height: 500px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .red {
@@ -529,17 +559,15 @@ export default {
 }
 
 .img-post {
-  width: 400px;
-  height: 550px;
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .show-comments {
   position: relative;
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*justify-content: space-between;*/
-  width: 50%;
+  display: flex;
+  flex-direction: column;
+  min-height: 1px;
 }
 
 .user-information {
@@ -551,7 +579,15 @@ export default {
   font-weight: 500;
   margin-bottom: 30px;
 }
+.wrapper-comment{
+  padding-left:5px ;
+  display: flex;
+  flex-direction: column;
+  min-height: 1px;
+  flex: 1;
+  overflow: auto;
 
+}
 .contact {
   position: relative;
 }
@@ -725,6 +761,8 @@ export default {
   .home-page{
     padding: 10px 0;
   }
-
+  .wrapper-comment{
+    padding-left:5px ;
+  }
 }
 </style>
