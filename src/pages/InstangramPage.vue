@@ -8,13 +8,13 @@
           <ListFriendsOnline/>
           <div v-for="(post,index) in postList"
                :key="index"
-                   class="bao-personal-post">
+               class="bao-personal-post">
             <div class="personal-post">
               <div class="title-personal-post">
                 <img @click="informationFriend"
                      class="avt-personal-post"
                      :src="post.avt"/>
-                <div class="name-personal-post">{{post.name}}</div>
+                <div class="name-personal-post">{{ post.name }}</div>
                 <div class="craeted-time">5d</div>
               </div>
               <svg aria-label="More options" class="_ab6- three-cham" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)"
@@ -26,7 +26,7 @@
               </svg>
             </div>
             <img class="post-picture" :src="post.post"/>
-            <div>
+            <div class="comments">
               <div class="emotional-interaction">
                 <div class="like-share">
                   <div @click="likePostFriend"
@@ -34,7 +34,7 @@
                     <i v-if="!like" class="fa-regular fa-heart"></i>
                     <i v-else class="fa-sharp fa-solid fa-heart"></i>
                   </div>
-                  <svg @click="commentPost" aria-label="Comment" class="x1lliihq x1n2onr6 emotional-status"
+                  <svg @click="commentPost(post)" aria-label="Comment" class="x1lliihq x1n2onr6 emotional-status"
                        color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24"
                        role="img" viewBox="0 0 24 24" width="24"><title>Comment</title>
                     <path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none" stroke="currentColor"
@@ -51,7 +51,8 @@
                   </svg>
                 </div>
                 <div @click="savePost">
-                  <svg v-if="!save" aria-label="Save" class="x1lliihq x1n2onr6 save" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)"
+                  <svg v-if="!save" aria-label="Save" class="x1lliihq x1n2onr6 save" color="rgb(0, 0, 0)"
+                       fill="rgb(0, 0, 0)"
                        height="24"
                        role="img" viewBox="0 0 24 24" width="24"><title>Save</title>
                     <polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor"
@@ -68,33 +69,33 @@
                 Liked by <span class="interactive-friends">hah_ny</span>
               </div>
               <div class="show-comment">
-                <div>
-                  <div v-for="comment in post.commentList"
-                       :key="comment.id"
-                       class="person-comments">
-                    <div class="title-personal-post">
-                      <div class="interactive-friends">{{ comment.created_by.id }}</div>
-                      <div class="content-comment">
-                        {{ comment.contentComment }}
-                      </div>
+                <div v-for="comment in post.commentList"
+                     :key="comment.id"
+                     class="person-comments">
+                  <div class="title-personal-post">
+                    <div class="interactive-friends">{{ comment.created_by.id }}</div>
+                    <div class="content-comment">
+                      {{ comment.contentComment }}
                     </div>
-                    <div>
-                      <i @click="toggleLike(comment)" class="fa fa-heart"
-                         :class="{ 'fa-heart': comment.is_like, 'fa-heart-o': !comment.is_like }"></i>
-                      <!--                      <p>{{ comment.is_like }}</p>-->
-                      <!--                      <i v-if="comment" class="fa-regular fa-heart love"></i>-->
-                      <!--                      <i v-else class="fa-sharp fa-solid fa-heart love"></i>-->
-                    </div>
+                  </div>
+                  <div>
+                    <i @click="toggleLike(comment)" class="fa fa-heart"
+                       :class="{ 'fa-heart': comment.is_like, 'fa-heart-o': !comment.is_like }"></i>
+                    <!--                      <p>{{ comment.is_like }}</p>-->
+                    <!--                      <i v-if="comment" class="fa-regular fa-heart love"></i>-->
+                    <!--                      <i v-else class="fa-sharp fa-solid fa-heart love"></i>-->
                   </div>
                 </div>
               </div>
               <div class="comment">
                 <textarea v-model="comment"
-                          @keyup.enter="onEnter"
+                          @keyup.enter="onEnter(post)"
                           class="comment-you"
                           placeholder="Add a comment…">
-
                 </textarea>
+                <div @click="onEnter(post)"
+                     v-if="hasComment"
+                     class="post">Post</div>
                 <div>
                   <svg aria-label="Emoji" class="x1lliihq x1n2onr6 felling-icon" color="rgb(115, 115, 115)"
                        fill="rgb(115, 115, 115)"
@@ -146,19 +147,19 @@
         </div>
       </div>
     </el-dialog>
-    <el-dialog custom-class="no-padding-modal no-padding-header"
+    <el-dialog custom-class="no-padding-modal no-padding-header comment-modal"
                :visible.sync="isOpenCommnetModal">
       <div class="comment-me">
         <div>
-          <img class="img-post" src="../assets/avt.jpg"/>
+          <img class="img-post" :src="currentComment?.post"/>
         </div>
         <div class="show-comments">
-          <div>
+          <div class="post-feel">
             <div class="personal-post modal">
               <div class="title-personal-post">
                 <img class="avt-personal-post"
-                     src="../assets/avt-friend.png"/>
-                <div class="name-personal-post">ane.tdiuz</div>
+                     :src="currentComment?.avt"/>
+                <div class="name-personal-post">{{ currentComment?.name }}</div>
               </div>
               <svg aria-label="More options" class="_ab6- three-cham" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)"
                    height="24"
@@ -171,11 +172,11 @@
             </div>
             <div class="title-personal-post">
               <img class="avt-personal-post"
-                   src="../assets/avt-friend.png"/>
+                   :src="currentComment?.avt"/>
               <div>
                 <div class="name-friend-post">
-                  <div class="name-personal-post">ane.tdiuz</div>
-                  <div>Đôi khi bỏ lỡ là mất luôn</div>
+                  <div class="name-personal-post">{{ currentComment?.name }}</div>
+                  <div>{{ currentComment?.content }}</div>
                 </div>
                 <div class="time-craeated">
                   <div>17h</div>
@@ -185,7 +186,7 @@
             </div>
           </div>
           <div class="wrapper-comment">
-            <div v-for="item in commentList"
+            <div v-for="item in currentComment?.commentList"
                  :key="item.id"
                  class="person-comments">
               <div class="title-personal-post">
@@ -237,7 +238,7 @@
             <div>
               <div class="comment">
                 <textarea v-model="search"
-                          @keyup.enter="onEnterModal"
+                          @keyup.enter="onEnterModal(currentComment)"
                           class="comment-you"
                           placeholder="Add a comment…"></textarea>
                 <div>
@@ -259,7 +260,7 @@
                :visible.sync="isOpenShareModal">
       <div>
         <div>
-<!--          <div class="share">share</div>-->
+          <!--          <div class="share">share</div>-->
           <div class="comment-modal">
             <div>To:</div>
             <input class="search-modal" type="text" placeholder="Search..."/>
@@ -331,6 +332,7 @@ export default {
           avt: 'https://images.unsplash.com/photo-1593601680767-3a289f3761aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2013&q=80',
           name: 'ane.tdiuz',
           created_at: 1686581516,
+          content: ' Đôi khi chỉ cần thâ hiểu nhau ...',
           post: 'https://images.unsplash.com/photo-1611200945005-403b70229452?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
           commentList: [
             {
@@ -345,6 +347,7 @@ export default {
             {
               id: 2,
               contentComment: 'Tuyệt vời',
+              content: ' Ngày ấy bạn và tôi',
               img: 'https://media.istockphoto.com/id/531162849/vi/anh/ng%C3%B4i-sao-nh%C3%AD.jpg?s=2048x2048&w=is&k=20&c=Puxjm4Bg5lkELXF2dwDDE_Tfbbtgwlr2bxAWzGHBibE=',
               created_by: {
                 id: 'ngocba.âhc',
@@ -361,7 +364,7 @@ export default {
           post: 'https://images.unsplash.com/photo-1611864444643-457fb0e29009?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
           commentList: [
             {
-              id: 1,
+              id: 3,
               contentComment: 'Nay làm không',
               img: 'https://media.istockphoto.com/id/148484407/vi/anh/n%C6%B0%E1%BB%9Bc-anh-%C4%91%C3%A0o-b%E1%BA%AFn-tung-t%C3%B3e.jpg?s=2048x2048&w=is&k=20&c=Xt3L5dqnUHAiLO5XdT0qHh9o07MEwFpYdsIdPMaaFbQ=',
               created_by: {
@@ -370,7 +373,7 @@ export default {
               is_like: false
             },
             {
-              id: 2,
+              id: 4,
               contentComment: 'Tạm',
               img: 'https://media.istockphoto.com/id/531162849/vi/anh/ng%C3%B4i-sao-nh%C3%AD.jpg?s=2048x2048&w=is&k=20&c=Puxjm4Bg5lkELXF2dwDDE_Tfbbtgwlr2bxAWzGHBibE=',
               created_by: {
@@ -382,13 +385,14 @@ export default {
         },
         {
           id: 3,
-          avt:'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/gliter-cat-2zz3v_025742551.png',
+          avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/gliter-cat-2zz3v_025742551.png',
           name: 'ngozzz.hihi',
+          content: ' Đôi khi chỉ cần thâ hiểu nhau ...',
           created_at: 1686581516,
-          post:  'https://images.unsplash.com/photo-1586723815262-83713dcfbfa1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80',
+          post: 'https://images.unsplash.com/photo-1586723815262-83713dcfbfa1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80',
           commentList: [
             {
-              id: 1,
+              id: 5,
               contentComment: 'Tuyêt vời',
               img: 'https://media.istockphoto.com/id/148484407/vi/anh/n%C6%B0%E1%BB%9Bc-anh-%C4%91%C3%A0o-b%E1%BA%AFn-tung-t%C3%B3e.jpg?s=2048x2048&w=is&k=20&c=Xt3L5dqnUHAiLO5XdT0qHh9o07MEwFpYdsIdPMaaFbQ=',
               created_by: {
@@ -397,7 +401,7 @@ export default {
               is_like: false
             },
             {
-              id: 2,
+              id: 6,
               contentComment: 'xinh thế',
               img: 'https://media.istockphoto.com/id/531162849/vi/anh/ng%C3%B4i-sao-nh%C3%AD.jpg?s=2048x2048&w=is&k=20&c=Puxjm4Bg5lkELXF2dwDDE_Tfbbtgwlr2bxAWzGHBibE=',
               created_by: {
@@ -414,36 +418,44 @@ export default {
       like: false,
       save: false,
       comment: '',
-      search: ''
+      search: '',
+      currentComment: null
+    }
+  },
+  computed: {
+    hasComment() {
+      return Boolean(this.comment.trim()); // trả về true nếu trường có giá trị
     }
   },
   methods: {
-    onEnter() {
+    onEnter(post) {
+      this.currentComment = post
       console.log(this.comment)
       const newComment = {
         contentComment: this.comment,
         created_by: {
-          id: 'huynhuyn',
+          id: 'huyn.huyn',
         },
-        is_like: true
+        is_like: false
 
       }
-      this.commentList.push(newComment);
+      this.currentComment.commentList.push(newComment);
       this.comment = '';
     },
-    onEnterModal() {
+    onEnterModal(post) {
+      this.currentComment = post
       const newCommentModal = {
         contentComment: this.search,
         img: 'https://media.istockphoto.com/id/531162849/vi/anh/ng%C3%B4i-sao-nh%C3%AD.jpg?s=2048x2048&w=is&k=20&c=Puxjm4Bg5lkELXF2dwDDE_Tfbbtgwlr2bxAWzGHBibE=',
         created_by: {
-          id: 'huynhuyn',
+          id: 'huyn.huyn',
         },
-        is_like: true
+        is_like: false
       }
-      this.commentList.push(newCommentModal);
+      this.currentComment.commentList.push(newCommentModal);
       this.search = '';
     },
-    savePost(){
+    savePost() {
       if (!this.save) {
         this.save = true
       } else {
@@ -453,8 +465,9 @@ export default {
     informationFriend() {
       this.isOpenInformationModal = true
     },
-    commentPost() {
+    commentPost(post) {
       this.isOpenCommnetModal = true
+      this.currentComment = post
     },
     sharePost() {
       this.isOpenShareModal = true
@@ -473,7 +486,7 @@ export default {
         this.like = false
       }
     },
-    toggleLike (comment) {
+    toggleLike(comment) {
       comment.is_like = !comment.is_like;
     }
   },
@@ -485,6 +498,7 @@ export default {
     padding: 0;
   }
 }
+
 .no-padding-header {
   .el-dialog__header {
     padding: 0;
@@ -497,6 +511,7 @@ export default {
   color: grey;
   cursor: pointer;
 }
+
 .avt-personal-post:hover {
   cursor: pointer;
 }
@@ -507,10 +522,19 @@ export default {
   height: 42px;
   border-radius: 999px;
 }
+
 .fa-heart {
   color: red;
 }
-
+.post{
+  position: absolute;
+  top:10px;
+  right: 30px;
+  color: rgb(0, 149, 246);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
 .fa-heart-o {
   color: grey;
 }
@@ -519,6 +543,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
 }
 
 .comment-me {
@@ -548,6 +577,8 @@ export default {
 .bao-personal-post {
   width: 80%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .search-modal {
@@ -569,12 +600,12 @@ export default {
   line-height: 20px;
   color: black;
 }
+
 .search-modal {
   display: flex;
 }
+
 .comments-modal {
-  position: absolute;
-  bottom: 0;
   width: 100%;
 }
 
@@ -609,7 +640,10 @@ export default {
   flex-direction: column;
   min-height: 1px;
 }
-
+.show-comment{
+  max-height: 200px;
+  overflow: auto;
+}
 .user-information {
   display: flex;
   align-items: center;
@@ -619,8 +653,9 @@ export default {
   font-weight: 500;
   margin-bottom: 30px;
 }
-.wrapper-comment{
-  padding-left:5px ;
+
+.wrapper-comment {
+  padding-left: 5px;
   display: flex;
   flex-direction: column;
   min-height: 1px;
@@ -628,6 +663,7 @@ export default {
   overflow: auto;
 
 }
+
 .contact {
   position: relative;
 }
@@ -689,7 +725,7 @@ export default {
 
 .comment-you {
   width: 100%;
-  /*padding: 10px;*/
+  padding: 10px;
   border: 0;
   border-bottom: 1px solid;
   outline: none;
@@ -793,16 +829,43 @@ export default {
   height: 100vh;
   background: #FFFFFF;
 }
+
 @media (max-width: 415px) {
-  .container{
+  .container {
     display: flex;
     flex-direction: column;
   }
-  .home-page{
+
+  .personal-post.modal {
+    display: none;
+  }
+
+  .show-comments {
+    height: 100%;
+  }
+
+  .home-page {
     padding: 10px 0;
   }
-  .wrapper-comment{
-    padding-left:5px ;
+
+  .wrapper-comment {
+    padding-left: 5px;
   }
+
+  .post-feel {
+    border-bottom: 1px solid gainsboro;
+    padding-bottom: 5px;
+  }
+
+  .comment-me {
+    display: flex;
+    flex-direction: column;
+    min-height: 600px;
+  }
+
+  .comments-modal {
+    padding: 0 10px;
+  }
+
 }
 </style>

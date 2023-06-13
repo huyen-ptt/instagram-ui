@@ -35,6 +35,7 @@
 .comment-modal .show-comments{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 .comment-modal .coments{
     flex: 1;
@@ -51,6 +52,11 @@
     padding: 0;
 
 }
+/*.comment-modal .show-comments{*/
+/*    display: flex;*/
+/*   */
+/*    flex-direction: column;*/
+/*}*/
 .el-dialog.modal-moremenu{
     margin: 15px 134px 39px;
     border-radius: 15px;
@@ -86,4 +92,5 @@
     .el-dialog.comment-modal{
         width: 100%;
     }
+    /*.comment-modal .*/
 }
