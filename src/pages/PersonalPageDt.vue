@@ -147,7 +147,7 @@ export default {
 .btn-custom {
   background: rgb(239, 239, 239);
   border-radius: 8px;
-  padding: 0 90px;
+  padding: 0 70px;
   border: 0;
   font-size: 14px;
   font-weight: 600;

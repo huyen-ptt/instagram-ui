@@ -43,6 +43,18 @@
 .el-dialog.custom-modal-share{
     width: 600px;
 }
+.custom-modal-share .el-dialog__header{
+    text-align: center;
+    padding: 0;
+}
+.modal-moremenu .el-dialog__header{
+    padding: 0;
+
+}
+.el-dialog.modal-moremenu{
+    margin: 15px 134px 39px;
+    border-radius: 15px;
+}
 
 @media (max-width: 768px) {
     .el-dialog.no-padding-modal{

@@ -69,7 +69,7 @@
               </div>
               <div class="show-comment">
                 <div>
-                  <div v-for="comment in commentList"
+                  <div v-for="comment in post.commentList"
                        :key="comment.id"
                        class="person-comments">
                     <div class="title-personal-post">
@@ -331,41 +331,81 @@ export default {
           avt: 'https://images.unsplash.com/photo-1593601680767-3a289f3761aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2013&q=80',
           name: 'ane.tdiuz',
           created_at: 1686581516,
-          post: 'https://images.unsplash.com/photo-1611200945005-403b70229452?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
+          post: 'https://images.unsplash.com/photo-1611200945005-403b70229452?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+          commentList: [
+            {
+              id: 1,
+              contentComment: 'xinh quá',
+              img: 'https://media.istockphoto.com/id/148484407/vi/anh/n%C6%B0%E1%BB%9Bc-anh-%C4%91%C3%A0o-b%E1%BA%AFn-tung-t%C3%B3e.jpg?s=2048x2048&w=is&k=20&c=Xt3L5dqnUHAiLO5XdT0qHh9o07MEwFpYdsIdPMaaFbQ=',
+              created_by: {
+                id: 'naznaz.hhr',
+              },
+              is_like: false
+            },
+            {
+              id: 2,
+              contentComment: 'Tuyệt vời',
+              img: 'https://media.istockphoto.com/id/531162849/vi/anh/ng%C3%B4i-sao-nh%C3%AD.jpg?s=2048x2048&w=is&k=20&c=Puxjm4Bg5lkELXF2dwDDE_Tfbbtgwlr2bxAWzGHBibE=',
+              created_by: {
+                id: 'ngocba.âhc',
+              },
+              is_like: false
+            }
+          ],
         },
         {
           id: 2,
           avt: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/sparkles-instagram_025613402.png',
           name: 'hanna.huyn',
           created_at: 1686581516,
-          post: 'https://images.unsplash.com/photo-1611864444643-457fb0e29009?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+          post: 'https://images.unsplash.com/photo-1611864444643-457fb0e29009?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+          commentList: [
+            {
+              id: 1,
+              contentComment: 'Nay làm không',
+              img: 'https://media.istockphoto.com/id/148484407/vi/anh/n%C6%B0%E1%BB%9Bc-anh-%C4%91%C3%A0o-b%E1%BA%AFn-tung-t%C3%B3e.jpg?s=2048x2048&w=is&k=20&c=Xt3L5dqnUHAiLO5XdT0qHh9o07MEwFpYdsIdPMaaFbQ=',
+              created_by: {
+                id: 'huyen.hazzz',
+              },
+              is_like: false
+            },
+            {
+              id: 2,
+              contentComment: 'Tạm',
+              img: 'https://media.istockphoto.com/id/531162849/vi/anh/ng%C3%B4i-sao-nh%C3%AD.jpg?s=2048x2048&w=is&k=20&c=Puxjm4Bg5lkELXF2dwDDE_Tfbbtgwlr2bxAWzGHBibE=',
+              created_by: {
+                id: 'van.kong',
+              },
+              is_like: false
+            }
+          ],
         },
         {
           id: 3,
           avt:'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/gliter-cat-2zz3v_025742551.png',
           name: 'ngozzz.hihi',
           created_at: 1686581516,
-          post:  'https://images.unsplash.com/photo-1586723815262-83713dcfbfa1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80'
-        }
-      ],
-      commentList: [
-        {
-          id: 1,
-          contentComment: 'xinh quá',
-          img: 'https://media.istockphoto.com/id/148484407/vi/anh/n%C6%B0%E1%BB%9Bc-anh-%C4%91%C3%A0o-b%E1%BA%AFn-tung-t%C3%B3e.jpg?s=2048x2048&w=is&k=20&c=Xt3L5dqnUHAiLO5XdT0qHh9o07MEwFpYdsIdPMaaFbQ=',
-          created_by: {
-            id: 'naznaz.hhr',
-          },
-          is_like: false
-        },
-        {
-          id: 2,
-          contentComment: 'Tuyệt vời',
-          img: 'https://media.istockphoto.com/id/531162849/vi/anh/ng%C3%B4i-sao-nh%C3%AD.jpg?s=2048x2048&w=is&k=20&c=Puxjm4Bg5lkELXF2dwDDE_Tfbbtgwlr2bxAWzGHBibE=',
-          created_by: {
-            id: 'ngocba.âhc',
-          },
-          is_like: false
+          post:  'https://images.unsplash.com/photo-1586723815262-83713dcfbfa1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80',
+          commentList: [
+            {
+              id: 1,
+              contentComment: 'Tuyêt vời',
+              img: 'https://media.istockphoto.com/id/148484407/vi/anh/n%C6%B0%E1%BB%9Bc-anh-%C4%91%C3%A0o-b%E1%BA%AFn-tung-t%C3%B3e.jpg?s=2048x2048&w=is&k=20&c=Xt3L5dqnUHAiLO5XdT0qHh9o07MEwFpYdsIdPMaaFbQ=',
+              created_by: {
+                id: 'haha.hhr',
+              },
+              is_like: false
+            },
+            {
+              id: 2,
+              contentComment: 'xinh thế',
+              img: 'https://media.istockphoto.com/id/531162849/vi/anh/ng%C3%B4i-sao-nh%C3%AD.jpg?s=2048x2048&w=is&k=20&c=Puxjm4Bg5lkELXF2dwDDE_Tfbbtgwlr2bxAWzGHBibE=',
+              created_by: {
+                id: 'bich.ngiaa',
+              },
+              is_like: false
+            }
+          ],
         }
       ],
       isOpenInformationModal: false,

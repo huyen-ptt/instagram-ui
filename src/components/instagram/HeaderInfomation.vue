@@ -138,7 +138,8 @@ export default {
 }
 
 .update {
-  padding: 5px 16px;
+  padding: 10px 3px;
+  width: 100px;
   background: rgb(239, 239, 239);
   color: rgb(0, 0, 0);
   cursor: pointer;

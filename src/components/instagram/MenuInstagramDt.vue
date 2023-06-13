@@ -71,6 +71,7 @@
     <router-link to="/personaldt">
       <img class="avt" src="@/assets/avt.png"/>
     </router-link>
+
   </div>
 </template>
 <script>

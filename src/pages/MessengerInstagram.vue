@@ -637,7 +637,11 @@ export default {
   margin-right: 13px;
   cursor: pointer;
 }
-
+.toolbar{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 .bao-contents {
   flex: 1;
   min-height: 1px;

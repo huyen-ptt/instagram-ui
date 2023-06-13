@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="link">
-      <div>
-        <svg aria-label="Posts" class="_ab6-" color="rgb(115, 115, 115)" fill="rgb(115, 115, 115)" height="24"
+      <router-link to="/personaldt">
+        <svg aria-label="Posts" class="_ab6- icon-no-active" color="rgb(115, 115, 115)" fill="rgb(115, 115, 115)" height="24"
              role="img" viewBox="0 0 24 24" width="24">
           <rect fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                 stroke-width="2" width="18" x="3" y="3"></rect>
@@ -15,7 +15,7 @@
           <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 x1="21" x2="3" y1="14.985" y2="14.985"></line>
         </svg>
-        <svg aria-label="Posts" class="_ab6-" color="rgb(0, 149, 246)" fill="rgb(0, 149, 246)" height="24" role="img"
+        <svg aria-label="Posts" class="_ab6- icon-active" color="rgb(0, 149, 246)" fill="rgb(0, 149, 246)" height="24" role="img"
              viewBox="0 0 24 24" width="24">
           <rect fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                 stroke-width="2" width="18" x="3" y="3"></rect>
@@ -28,40 +28,15 @@
           <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 x1="21" x2="3" y1="14.985" y2="14.985"></line>
         </svg>
-      </div>
-      <router-link to="/personaldt">
-        <svg aria-label="Feed" class="_ab6- icon-no-active" color="rgb(115, 115, 115)" fill="rgb(115, 115, 115)" height="24"
-             role="img"
-             viewBox="0 0 24 24" width="24">
-          <rect fill="none" height="10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                stroke-width="2" width="12" x="6" y="7"></rect>
-          <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"
-                x1="6.002" x2="18" y1="3.004" y2="3.004"></line>
-          <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"
-                x1="6.002" x2="18" y1="21" y2="21"></line>
-        </svg>
-        <svg aria-label="Feed" class="_ab6- icon-active" color="rgb(0, 149, 246)" fill="rgb(0, 149, 246)" height="24" role="img"
-             viewBox="0 0 24 24" width="24">
-          <rect fill="none" height="10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                stroke-width="2" width="12" x="6" y="7"></rect>
-          <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"
-                x1="6.002" x2="18" y1="3.004" y2="3.004"></line>
-          <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"
-                x1="6.002" x2="18" y1="21" y2="21"></line>
-        </svg>
       </router-link>
-      <router-link to="saveddt">
+      <router-link to="/saveddt">
         <svg aria-label="Saved" class="_ab6- icon-no-active" color="rgb(115, 115, 115)" fill="rgb(115, 115, 115)" height="24"
              role="img" viewBox="0 0 24 24" width="24">
           <polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor"
                    stroke-linecap="round"
                    stroke-linejoin="round" stroke-width="2"></polygon>
         </svg>
-        <svg aria-label="Saved" class="_ab6- icon-active" color="rgb(0, 149, 246)" fill="rgb(0, 149, 246)" height="24" role="img"
-             viewBox="0 0 24 24" width="24">
-          <polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor" stroke-linecap="round"
-                   stroke-linejoin="round" stroke-width="2"></polygon>
-        </svg>
+        <svg aria-label="Saved" class="_ab6- icon-active" color="rgb(0, 149, 246)" fill="rgb(0, 149, 246)" height="24" role="img" viewBox="0 0 24 24" width="24"><polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon></svg>
       </router-link>
       <router-link to="/taggetdt">
         <svg aria-label="Tagged" class="_ab6- icon-no-active" color="rgb(115, 115, 115)" fill="rgb(115, 115, 115)" height="24"
@@ -99,4 +74,26 @@
   padding: 12px;
   border-bottom: 1px solid gainsboro;
 }
+.icon-active {
+  display: none;
+}
+ @media (max-width: 415px) {
+   .link {
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+     padding: 12px;
+     border-bottom: 1px solid gainsboro;
+   }
+   .icon-active {
+     display: none;
+   }
+   .router-link-exact-active .icon-active{
+     display: block;
+   }
+   .router-link-exact-active .icon-no-active{
+     display: none;
+   }
+ }
+
 </style>
