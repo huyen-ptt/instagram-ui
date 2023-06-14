@@ -990,6 +990,12 @@ felling-icon {
   .o-nhap{
     display: none;
   }
+  .item-icon-wrapper{
+    gap:25px;
+  }
+  .small-images-wrapper{
+    gap:25px;
+  }
 }
 
 @media (max-width: 415px) {
