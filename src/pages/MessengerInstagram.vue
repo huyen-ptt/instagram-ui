@@ -683,7 +683,6 @@ export default {
   .name {
     display: none;
   }
-
   .title-messenger {
     display: none;
   }
@@ -743,6 +742,7 @@ export default {
     gap:10px;
     align-items: center;
   }
+
   .name-me{
     font-size: 16px;
     font-weight: 600;

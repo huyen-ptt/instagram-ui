@@ -20,14 +20,44 @@
       <img class="avt-friend" src="@/assets/avt (4).png"/>
       <div class="name-friend">Hzzz</div>
     </div>
+    <div class="circle-avt">
+      <img class="avt-friend" src="@/assets/avt.png"/>
+      <div class="name-friend">Jonh</div>
+    </div>
+    <div class="circle-avt">
+      <img class="avt-friend" src="@/assets/avt (4).png"/>
+      <div class="name-friend">Hzzz</div>
+    </div><div class="circle-avt">
+    <img class="avt-friend" src="@/assets/avt.png"/>
+    <div class="name-friend">Jonh</div>
+  </div>
+    <div class="circle-avt">
+      <img class="avt-friend" src="@/assets/avt (4).png"/>
+      <div class="name-friend">Hzzz</div>
+    </div>
+    <div class="circle-avt">
+      <img class="avt-friend" src="@/assets/avt.png"/>
+      <div class="name-friend">Jonh</div>
+    </div>
+    <div class="circle-avt">
+      <img class="avt-friend" src="@/assets/avt (4).png"/>
+      <div class="name-friend">Hzzz</div>
+    </div>
+
   </div>
 </template>
 <script></script>
-<style>
+<style scoped>
 .header {
   display: flex;
   gap: 20px;
   margin-bottom: 30px;
+  max-width: 500px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.header::-webkit-scrollbar {
+  width: 0px;
 }
 .name-friend {
   color: rgb(0, 0, 0);
@@ -42,6 +72,7 @@
 .circle-avt {
   width: 66px;
   height: 66px;
+  min-width: 66px;
   border-radius: 999px;
   padding: 3px;
   border: 3px solid #55A99D;

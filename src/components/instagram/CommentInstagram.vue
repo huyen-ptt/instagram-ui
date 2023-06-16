@@ -371,7 +371,10 @@ export default {
   .comments-modal {
     padding: 0 10px;
   }
-
+  .time-craeated{
+    display: flex;
+    gap:10px;
+  }
   .personal-post.modal {
     display: none;
   }

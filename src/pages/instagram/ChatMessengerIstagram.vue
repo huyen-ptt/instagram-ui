@@ -494,4 +494,7 @@ export default {
 .wrapper-icon svg {
   margin-right: 15px;
 }
+.noi-dung{
+  height: 100vh;
+}
 </style>

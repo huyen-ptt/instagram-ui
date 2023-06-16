@@ -1021,6 +1021,18 @@ felling-icon {
   .wrapper-comment{
     padding-left:5px ;
   }
+  .comment-me{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .wrapper-comment{
+    max-height: 200px;
+    overflow: auto;
+  }
+  .like-comment{
+    padding: 0 5px;
+  }
   .avt-personal-post{
     width: 30px;
     height: 30px;
