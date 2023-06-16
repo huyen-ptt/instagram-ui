@@ -1006,6 +1006,13 @@ felling-icon {
     flex-direction: column;
     padding-top: 15px;
   }
+  .img-post{
+    max-height: 300px;
+    object-fit: cover;
+  }
+  .comment-you{
+    border-bottom: 0;
+  }
   .search {
     display: block;
     padding: 6px 44px;

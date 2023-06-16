@@ -72,8 +72,8 @@
         width: 90%;
     }
     .el-dialog.modal-moremenu{
-        margin: 0;
-        width: 40%;
+        margin: 10px;
+        width: 37%;
         border-radius: 15px;
     }
     .modal-moremenu .el-dialog__header{

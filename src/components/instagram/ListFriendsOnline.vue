@@ -10,7 +10,7 @@
     </div>
     <div class="circle-avt">
       <img class="avt-friend" src="@/assets/avt (3).png"/>
-      <div class="name-friend">Anneee.dz</div>
+      <div class="name-friend">Anneee</div>
     </div>
     <div class="circle-avt">
       <img class="avt-friend" src="@/assets/avt.png"/>
@@ -51,13 +51,15 @@
 .header {
   display: flex;
   gap: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   max-width: 500px;
   overflow-x: auto;
   overflow-y: hidden;
+  min-height: 20vh;
 }
 .header::-webkit-scrollbar {
   width: 0px;
+
 }
 .name-friend {
   color: rgb(0, 0, 0);
@@ -80,13 +82,22 @@
 .avt-friend {
   padding-bottom: 5px;
 }
+@media (max-width: 768px) {
+  .header{
+    min-height: 22vh;
+  }
+}
 @media (max-width: 415px) {
   .circle-avt{
     width: 56px;
     height: 56px;
+    min-width: 56px;
   }
   .header{
     justify-content: space-around;
+    max-width: 100vh;
+    min-height: 20vh;
+    margin-bottom: 0;
   }
 }
 </style>

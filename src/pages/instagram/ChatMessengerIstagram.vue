@@ -484,6 +484,7 @@ export default {
   padding: 15px 58px;
   border-radius: 40px;
   border: 1px solid rgb(219, 219, 219);
+  margin-bottom: 15px;
 }
 .wrapper-icon {
   position: absolute;
