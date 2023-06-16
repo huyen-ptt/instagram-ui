@@ -139,7 +139,7 @@
               <div class="emotional-interaction">
                 <div class="like-share">
                   <div>
-                    <div @click="likePostFriend"
+                    <div @click="likePostFriend(currentImage)"
                          id="heart">
                       <i v-if="!like" class="fa-regular fa-heart"></i>
                       <i v-else class="fa-sharp fa-solid fa-heart"></i>
@@ -577,11 +577,13 @@ export default {
       this.commentList.push(newComment);
       this.search = '';
     },
-    likePostFriend() {
+    likePostFriend(item) {
       if (!this.like) {
         this.like = true
+        item.like_count ++
       } else {
         this.like = false
+        item.like_count --
       }
     },
     savePost() {

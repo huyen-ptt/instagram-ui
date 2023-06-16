@@ -244,6 +244,15 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+.wrapper-comment{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 1px;
+  overflow: auto;
+  padding-left: 5px;
+}
 .img-post {
   width: 100%;
   height: 100%;

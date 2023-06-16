@@ -65,6 +65,9 @@ export default {
         this.like = false
       }
     },
+    sharePost() {
+      this.$emit('openModalShare',)
+    },
     commentPost(post) {
       this.$emit('openModalComment',post)
       // this.isOpenCommnetModal = true
@@ -76,10 +79,6 @@ export default {
       } else {
         this.save = false
       }
-    },
-
-    sharePost() {
-      this.isOpenShareModal = true
     },
   }
 }

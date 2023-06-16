@@ -6,7 +6,7 @@
       <div class="feeds-content">
         <div class="home">
           <ListFriendsOnline/>
-          <PostInstagram @openModalComment="openComment"/>
+          <PostInstagram @openModalComment="openComment" @openModalShare="openShare"/>
         </div>
         <SuggestionsPage/>
       </div>
@@ -47,7 +47,6 @@
       </div>
     </el-dialog>
     <CommentInstagram ref="opentModal"/>
-
     <el-dialog title="Share"
                custom-class="custom-modal-share"
                :visible.sync="isOpenShareModal">
@@ -109,6 +108,7 @@ import MenuInstagramDt from "@/components/instagram/MenuInstagramDt.vue";
 import HeaderInstagramDt from "@/components/instagram/HeaderInstagramDt.vue";
 import CommentInstagram from "@/components/instagram/CommentInstagram.vue";
 import PostInstagram from "@/components/instagram/PostInstagram.vue";
+// import SharePost from "@/components/instagram/SharePost.vue";
 
 export default {
   components: {
@@ -119,7 +119,8 @@ export default {
     MenuInstagramDt,
     HeaderInstagramDt,
     CommentInstagram,
-    PostInstagram
+    PostInstagram,
+    // SharePost
   },
   data() {
     return {
@@ -269,7 +270,7 @@ export default {
       // this.isOpenCommnetModal = true
       this.currentComment = post
     },
-    sharePost() {
+    openShare() {
       this.isOpenShareModal = true
     },
     likePostFriend() {
@@ -315,7 +316,6 @@ export default {
 .avt-personal-post:hover {
   cursor: pointer;
 }
-
 
 .avt-personal-post {
   width: 42px;

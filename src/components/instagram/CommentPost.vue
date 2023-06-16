@@ -1,6 +1,6 @@
 <template>
   <div class="comment">
-                <textarea v-model="comment"
+                <textarea v-model="post.comentContainer"
                           @keyup.enter="onEnter(post)"
                           class="comment-you"
                           placeholder="Add a comment…">
@@ -19,6 +19,39 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    post: {
+      type: Object,
+    }
+  },
+  computed: {
+    hasComment() {
+      return Boolean(this.comment.trim()); // trả về true nếu trường có giá trị
+    }
+  },
+  methods: {
+    onEnter(post) {
+      console.log(post)
+      this.currentComment = post
+      console.log(post.comentContainer)
+      const newComment = {
+        contentComment: post.comentContainer,
+        created_by: {
+          id: 'huyn.huyn',
+        },
+        is_like: false
+
+      }
+
+      this.currentComment.commentList.push(newComment);
+      post.comentContainer = '';
+    },
+
+  }
+}
+</script>
 <style scoped lang="scss">
 .comment {
   display: flex;
@@ -26,4 +59,45 @@
   width: 100%;
   position: relative;
 }
+
+.comment-you {
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  border-bottom: 1px solid;
+  outline: none;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+}
+
+#heart i {
+  color: red;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.post {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  color: rgb(0, 149, 246);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.felling-icon:hover {
+  cursor: pointer;
+  opacity: .5;
+}
+
+.felling-icon {
+  position: absolute;
+  top: 13px;
+  right: 10px;
+}
+
 </style>

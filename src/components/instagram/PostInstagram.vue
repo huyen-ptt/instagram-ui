@@ -6,10 +6,11 @@
       <HeaderPost :post="post"/>
       <img class="post-picture" :src="post.post"/>
       <div class="comments">
-        <CommentListPost :post="post" @openModalComment="openComment"/>
+        <CommentListPost :post="post" @openModalComment="openComment" @openModalShare="openShare"/>
         <ListCommentPost :post="post"/>
+<!--        <CommentPost :post="post"/>-->
         <div class="comment">
-                <textarea v-model="comment"
+                <textarea v-model="post.comentContainer"
                           @keyup.enter="onEnter(post)"
                           class="comment-you"
                           placeholder="Add a comment…">
@@ -27,7 +28,6 @@
             </svg>
           </div>
         </div>
-<!--        <CommentPost/>-->
       </div>
     </div>
   </div>
@@ -36,13 +36,13 @@
 import HeaderPost from "@/components/instagram/HeaderPost.vue";
 import CommentListPost from "@/components/instagram/CommentListPost.vue";
 import ListCommentPost from "@/components/instagram/ListCommentPost.vue";
-import CommentPost from "@/components/instagram/CommentPost.vue";
+// import CommentPost from "@/components/instagram/CommentPost.vue";
 export default {
   components: {
     HeaderPost,
     CommentListPost,
     ListCommentPost,
-    CommentPost
+    // CommentPost
   },
   data() {
     return {
@@ -76,6 +76,7 @@ export default {
               is_like: false
             }
           ],
+          comentContainer: ""
         },
         {
           id: 2,
@@ -103,6 +104,7 @@ export default {
               is_like: false
             }
           ],
+          comentContainer: ""
         },
         {
           id: 3,
@@ -131,6 +133,7 @@ export default {
               is_like: false
             }
           ],
+          comentContainer: ""
         }
       ],
       isOpenShareModal: false
@@ -145,9 +148,9 @@ export default {
     onEnter(post) {
       console.log(post)
       this.currentComment = post
-      console.log(this.comment)
+      console.log(post.comentContainer)
       const newComment = {
-        contentComment: this.comment,
+        contentComment: post.comentContainer,
         created_by: {
           id: 'huyn.huyn',
         },
@@ -156,12 +159,14 @@ export default {
       }
 
       this.currentComment.commentList.push(newComment);
-      this.comment = '';
+      post.comentContainer = '';
     },
-
     openComment(post){
       this.$emit('openModalComment',post)
-    }
+    },
+    openShare() {
+      this.$emit('openModalShare',)
+    },
 
   }
 }
@@ -190,7 +195,6 @@ export default {
   cursor: pointer;
   font-size: 24px;
 }
-
 .comment {
   display: flex;
   align-items: center;
@@ -204,6 +208,17 @@ export default {
   border: 0;
   border-bottom: 1px solid;
   outline: none;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+}
+
+#heart i {
+  color: red;
+  cursor: pointer;
+  font-size: 24px;
 }
 
 .post {
@@ -226,5 +241,6 @@ export default {
   top: 13px;
   right: 10px;
 }
+
 
 </style>
