@@ -24,6 +24,7 @@ import SavedDt from "@/pages/instagram/SavedDt.vue";
 import TaggetPage from "@/pages/instagram/TaggetPage.vue";
 import TaggetDt from "@/pages/instagram/TaggetDt.vue";
 import ChatMessengerIstagram from "@/pages/instagram/ChatMessengerIstagram.vue";
+import PageMe from "@/pages/PageMe.vue";
 import MessengerInstagram from "@/pages/MessengerInstagram.vue";
 import PersonalPageDt from  "@/pages/PersonalPageDt.vue";
 Vue.use(Router)
@@ -90,6 +91,11 @@ export default new Router({
             path: '/chatIstagram/:id',
             name: 'ChatMessengerIstagram' ,
             component : ChatMessengerIstagram
+        },
+        {
+            path: '/pageme',
+            name: 'PageMe' ,
+            component : PageMe
         },
         {
             path: '/test',
