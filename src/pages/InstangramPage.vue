@@ -501,7 +501,9 @@ export default {
   .show-comments {
     height: 100%;
   }
-
+  .home{
+    max-width: 100%;
+  }
   .home-page {
     padding: 10px 0;
   }

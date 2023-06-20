@@ -993,10 +993,10 @@ felling-icon {
     display: none;
   }
   .item-icon-wrapper{
-    gap:25px;
+    gap:2px;
   }
   .small-images-wrapper{
-    gap:25px;
+    gap:2px;
   }
 }
 

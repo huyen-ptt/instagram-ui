@@ -67,8 +67,6 @@
             </div>
           </div>
           <div class="toolbar">
-            <el-switch v-model="changeContent">
-            </el-switch>
             <svg aria-label="Audio call" class="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img"
                  viewBox="0 0 24 24" width="24">
               <path
@@ -102,6 +100,9 @@
                    src="https://images.unsplash.com/photo-1580908343124-72e0a786c588?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1795&q=80"/>
               <div class="user-name">Phạm Thị Hoa</div>
               <div class="user-nickname">_p.hoza3_ · Instagram</div>
+              <el-switch v-model="changeContent" style=" display: flex;
+                justify-content: center;">
+              </el-switch>
             </div>
             <button class="btn-profile">View profile</button>
           </div>
@@ -471,7 +472,9 @@ export default {
 .chat {
   padding: 0 14px;
 }
-
+.user-nickname{
+  margin-bottom: 10px;
+}
 .wrapper-icon {
   position: absolute;
   top: 14px;
@@ -715,15 +718,17 @@ export default {
   .name {
     display: block;
   }
-
+ .btn-profile{
+   margin: 17px 32px;
+ }
   .bao-content {
     display: block;
   }
-
   .home-messenger {
     width: 100%;
     border-right: 0;
   }
+
   .next{
     display: block;
     font-size: 24px;
