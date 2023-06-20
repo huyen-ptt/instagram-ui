@@ -557,6 +557,7 @@ export default {
   .container{
     display: flex;
     flex-direction: column;
+    max-width: 100%;
   }
   .comment-you{
     padding: 12px 21px;
