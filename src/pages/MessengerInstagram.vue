@@ -100,9 +100,13 @@
                    src="https://images.unsplash.com/photo-1580908343124-72e0a786c588?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1795&q=80"/>
               <div class="user-name">Phạm Thị Hoa</div>
               <div class="user-nickname">_p.hoza3_ · Instagram</div>
-              <el-switch v-model="changeContent" style=" display: flex;
+              <div class="check">
+                <div>Chat You</div>
+                <el-switch v-model="changeContent" style=" display: flex;
                 justify-content: center;">
-              </el-switch>
+                </el-switch>
+                <div>Chat Me</div>
+              </div>
             </div>
             <button class="btn-profile">View profile</button>
           </div>
@@ -426,7 +430,13 @@ export default {
 .chat-you:hover .feeling-right {
   opacity: 1;
 }
-
+.check{
+  display: flex;
+  align-items: center;
+  gap:10px;
+  font-size: 12px;
+  font-weight: 500;
+}
 .chat-me:hover .feeling-left {
   opacity: 1;
 }
@@ -489,6 +499,7 @@ export default {
   position: relative;
   margin-top: 5px;
   padding: 0 14px;
+  margin-bottom: 10px;
   /*position: fixed;*/
   /*bottom: 0;*/
   /*width: 100%;*/

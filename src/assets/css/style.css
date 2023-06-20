@@ -52,11 +52,11 @@
     padding: 0;
 
 }
-/*.comment-modal .show-comments{*/
-/*    display: flex;*/
-/*   */
-/*    flex-direction: column;*/
-/*}*/
+.comment-modal .show-comments{
+    display: flex;
+
+    flex-direction: column;
+}
 .el-dialog.modal-moremenu{
     margin: 15px 134px 39px;
     border-radius: 15px;

@@ -13,7 +13,7 @@
                  :class="{ 'fa-sharp fa-solid': video.is_like, 'fa-regular': !video.is_like }"></i>
               <div class="interactions">{{ convertedLikes(video.like_count) }}</div>
             </div>
-            <div @click="openModal">
+            <div @click="openModal(video)">
               <svg aria-label="Comment" class="x1lliihq x1n2onr6 emotional-status"
                    color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24"
                    role="img" viewBox="0 0 24 24" width="24"><title>Comment</title>
@@ -120,7 +120,7 @@
       <div class="comment-me">
         <div class="show-comments">
           <div class="coments">
-            <div v-for="item in commentList"
+            <div v-for="item in currentComment?.commentList"
                  :key="item.id"
                  class="person-comments">
               <div class="title-personal-post">
@@ -160,7 +160,7 @@
             <div>
               <div class="comment">
                 <input v-model="search"
-                       @keyup.enter="onEnterModal"
+                       @keyup.enter="onEnterModal(currentComment)"
                        class="comment-you"
                        placeholder="Add a comment…"/>
                 <div>
@@ -195,31 +195,8 @@ export default {
       isOpenShareModal: false,
       isOpenCommnetModal: false,
       search: '',
-      commentList: [
-        {
-          id: 1,
-          contentComment: 'xinh quá',
-          img: 'https://kenh14cdn.com/2016/k2-2-1480327709662.jpg',
-          created_by: {
-            id: 'naznaz.hhr',
-          },
-          create_time: '',
-          is_like: true,
-          tym_count: false,
-          tym: 19
-        },
-        {
-          id: 2,
-          contentComment: 'Tuyệt vời',
-          img: 'https://media.istockphoto.com/id/148484407/vi/anh/n%C6%B0%E1%BB%9Bc-anh-%C4%91%C3%A0o-b%E1%BA%AFn-tung-t%C3%B3e.jpg?s=2048x2048&w=is&k=20&c=Xt3L5dqnUHAiLO5XdT0qHh9o07MEwFpYdsIdPMaaFbQ=',
-          created_by: {
-            id: 'ngocba.âhc',
-          },
-          is_like: true,
-          tym_count: false,
-          tym: 20
-        }
-      ],
+      currentComment: null,
+
       videoList: [
         {
           id: 1,
@@ -227,7 +204,32 @@ export default {
           like_count: 10043,
           comment_count: 2000,
           img_music: 'https://img5.thuthuatphanmem.vn/uploads/2022/01/07/glitter-mask-hnheldinw_025549768.png',
-          is_like: false
+          is_like: false,
+          commentList: [
+            {
+              id: 1,
+              contentComment: 'xinh quá',
+              img: 'https://kenh14cdn.com/2016/k2-2-1480327709662.jpg',
+              created_by: {
+                id: 'naznaz.hhr',
+              },
+              create_time: '',
+              is_like: true,
+              tym_count: false,
+              tym: 19
+            },
+            {
+              id: 2,
+              contentComment: 'Tuyệt vời',
+              img: 'https://media.istockphoto.com/id/148484407/vi/anh/n%C6%B0%E1%BB%9Bc-anh-%C4%91%C3%A0o-b%E1%BA%AFn-tung-t%C3%B3e.jpg?s=2048x2048&w=is&k=20&c=Xt3L5dqnUHAiLO5XdT0qHh9o07MEwFpYdsIdPMaaFbQ=',
+              created_by: {
+                id: 'ngocba.âhc',
+              },
+              is_like: true,
+              tym_count: false,
+              tym: 20
+            }
+          ],
         },
         {
           id: 2,
@@ -236,12 +238,38 @@ export default {
           comment_count: 43672,
           img_music: 'https://media.istockphoto.com/id/1397444575/vi/anh/phong-c%C3%A1ch-h%E1%BA%A1nh-ph%C3%BAc-m%E1%BB%89m-c%C6%B0%E1%BB%9Di-ng%C6%B0%E1%BB%9Di-ph%E1%BB%A5-n%E1%BB%AF-m%E1%BB%B9-g%E1%BB%91c-phi-%C4%91eo-tai-nghe-v%C3%A0-nghe-nh%E1%BA%A1c-trong-n%E1%BB%81n-ph%C3%B2ng.jpg?s=2048x2048&w=is&k=20&c=EICgb5CwbHI3T9dVihc-rndQv0zWZWlKfJe3XK1AsAk=',
           is_like: false,
+          commentList: [
+            {
+              id: 1,
+              contentComment: 'xinh quá',
+              img: 'https://kenh14cdn.com/2016/k2-2-1480327709662.jpg',
+              created_by: {
+                id: 'naznaz.hhr',
+              },
+              create_time: '',
+              is_like: true,
+              tym_count: false,
+              tym: 19
+            },
+            {
+              id: 2,
+              contentComment: 'Tuyệt vời',
+              img: 'https://media.istockphoto.com/id/148484407/vi/anh/n%C6%B0%E1%BB%9Bc-anh-%C4%91%C3%A0o-b%E1%BA%AFn-tung-t%C3%B3e.jpg?s=2048x2048&w=is&k=20&c=Xt3L5dqnUHAiLO5XdT0qHh9o07MEwFpYdsIdPMaaFbQ=',
+              created_by: {
+                id: 'ngocba.âhc',
+              },
+              is_like: true,
+              tym_count: false,
+              tym: 20
+            }
+          ],
         }
       ]
     }
   },
   methods: {
-    onEnterModal() {
+    onEnterModal(comment) {
+      this.currentComment = comment
       const newCommentModal = {
         contentComment: this.search,
         img: 'https://media.istockphoto.com/id/531162849/vi/anh/ng%C3%B4i-sao-nh%C3%AD.jpg?s=2048x2048&w=is&k=20&c=Puxjm4Bg5lkELXF2dwDDE_Tfbbtgwlr2bxAWzGHBibE=',
@@ -250,9 +278,9 @@ export default {
         },
         is_like: true,
         tym_count: false,
-        tym: 0
+        tym: -1
       }
-      this.commentList.push(newCommentModal);
+      this.currentComment.commentList.push(newCommentModal);
       this.search = '';
     },
     toggleLike(video) {
@@ -296,8 +324,9 @@ export default {
       }
       return comment;
     },
-    openModal() {
+    openModal(comment) {
       this.isOpenCommnetModal = true
+      this.currentComment = comment
     },
     savePost() {
       if (!this.save) {
@@ -325,7 +354,6 @@ export default {
 .reply {
   font-weight: 500;
 }
-
 .thong-tin {
   display: flex;
   align-items: center;
@@ -338,7 +366,10 @@ export default {
 .fa-heart-o {
   color: grey;
 }
-
+.coments{
+  overflow: auto;
+  max-height: 200px;
+}
 .fa {
   font-size: 20px;
   color: grey;
@@ -486,6 +517,8 @@ export default {
 .interactions {
   font-size: 13px;
   font-weight: 400;
+  display: flex;
+  justify-content: center;
 }
 
 .fa-heart {

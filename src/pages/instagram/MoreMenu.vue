@@ -42,7 +42,8 @@
           <div>
             Drag photos and videos here
           </div>
-          <button>Select from computer</button>
+<!--          <button>Select from computer</button>-->
+          <input type="file" placeholder="Select from computer" accept="image/png, image/jpeg"/>
         </div>
       </div>
     </el-dialog>
