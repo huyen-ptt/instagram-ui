@@ -1,7 +1,7 @@
 <template>
   <div class="container-introduce">
     <div class="header">
-      <div class="logo">Stefan.dev</div>
+      <div class="logo">ThanhHuyen</div>
       <ul class="link">
         <li>
           <a href="#home">Home</a>

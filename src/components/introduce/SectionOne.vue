@@ -1,9 +1,8 @@
 <template>
   <div class="section-one" id="home">
     <div class="generality">
-      <div class="specialized-field">Front-End React Developer</div>
-      <div class="introduce">Hi, I'm Stefan Topalovic. A passionate Front-end React Developer based in Belgrade,
-        Serbia. 📍
+      <div class="specialized-field">Front-End Vue Developer</div>
+      <div class="introduce">Xin Chào , Tôi tên là Huyền , Là một lập trình viên về Font-end. Mình đến từ Hưng Yên 📍
       </div>
       <div class="link">
         <a target="_blank" href="https://www.linkedin.com/in/stefan-topalovic-dev/">
@@ -28,6 +27,9 @@
           </div>
           <div class="item-logo">
             <img class="logo-img" src="https://sass-lang.com/assets/img/styleguide/seal-black-1e36d095.png"/>
+          </div>
+          <div class="item-logo">
+            <img  class="logo-img" src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg"/>
           </div>
         </div>
       </div>
@@ -100,7 +102,7 @@
         display: flex;
         font-size: 17px;
         justify-content: center;
-        padding: 11px;
+        padding: 4px 11px;
 
         .logo-img {
           width: 34px;
@@ -132,8 +134,9 @@
 
       .fa-brands {
         color: #2d2e32;
-        width: 26px;
-        height: 30px;
+        font-size: 30px;
+        //width: 26px;
+        //height: 30px;
 
       }
     }

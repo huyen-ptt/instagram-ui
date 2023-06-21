@@ -4,7 +4,7 @@
       <div class="item-one">
         CONTACT
       </div>
-      <div class="item-two">Don't be shy! Hit me up! 👇</div>
+<!--      <div class="item-two">Don't be shy! Hit me up! 👇</div>-->
       <div class="thong-tin">
         <div class="item-thong-tin">
           <div class="circle">
@@ -12,7 +12,7 @@
           </div>
           <div class="bao-local">
             <div class="local">Location</div>
-            <div class="current-position">Belgrade, Serbia</div>
+            <div class="current-position">Hưng Yên, Việt Nam</div>
           </div>
         </div>
         <div class="item-thong-tin">
@@ -21,7 +21,7 @@
           </div>
           <div class="bao-local">
             <div class="local">Mail</div>
-            <div class="current-position">stefan.topallovic@gmail.com</div>
+            <div class="current-position">phamthanhhuyen19124@gmail.com</div>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
     margin: 0 auto;
     .item-one {
       color: #147efb;
-      font-size: 17px;
+      font-size: 27px;
       font-weight: 700;
       margin: 0px 0px 10px;
     }
@@ -80,7 +80,7 @@
       .circle {
         background-color: #ffffff;
         border-radius: 999px;
-        box-shadow: #000000 0px 0px 10px 0px;
+        box-shadow: 0 0 10px rgba(0,0,0,.09);
         font-size: 10px;
         padding: 23px;
         width: 77px;
