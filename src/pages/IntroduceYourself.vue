@@ -16,48 +16,41 @@
           <a href="#contact">Contact</a>
         </li>
       </ul>
-      <div>
-        <div>Tech Stack</div>
-        <div>
-          <div>
-            <img src="https://cdn.pixabay.com/photo/2018/05/08/21/28/html5-3384014_1280.png"/>
-          </div>
-          <div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg"/>
-          </div>
-          <div>
-            <img src="https://www.citypng.com/public/uploads/preview/js-javascript-round-logo-icon-png-11662226392lsrrajcm0y.png"/>
-          </div>
-        </div>
-      </div>
     </div>
-    <div class="section-one" id="home">
-      <div class="generality">
-        <div class="specialized-field">Front-End React Developer</div>
-        <div class="introduce">Hi, I'm Stefan Topalovic. A passionate Front-end React Developer based in Belgrade, Serbia. 📍</div>
-        <div class="link">
-          <a target="_blank" href="https://www.linkedin.com/in/stefan-topalovic-dev/">
-            <i class="fa-brands fa-linkedin"></i>
-          </a>
-          <a target="_blank" href="https://github.com/stefvndev">
-            <i class="fa-brands fa-github"></i>
-          </a>
-        </div>
+    <SectionOne/>
+    <SectionTwo/>
+    <SectionThree/>
+    <SectionFour/>
+    <div class="footer">
+      <div class="footer-left">
+        Copyright ©2023. All rights are reserved
       </div>
-      <div>
-        <img class="avt" src="@/assets/page_new/avt.jpg"/>
-      </div>
-    </div>
-    <div class="section-two" id="about">
-      <div>
-        <img src="https://icdn.dantri.com.vn/2021/03/23/meo-chup-anh-do-uong-cuc-dep-bang-dien-thoaidocx-1616516940852.jpeg"/>
-      </div>
-      <div>
-        <img src="https://sass-lang.com/assets/img/styleguide/seal-black-1e36d095.png"/>
+      <div class="footer-right">
+        <a href="https://www.linkedin.com/in/stefan-topalovic-dev/">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/stefvndev">
+          <i class="fa-brands fa-github"></i></a>
       </div>
     </div>
   </div>
 </template>
+<script>
+import SectionOne from "@/components/introduce/SectionOne.vue";
+import SectionTwo from "@/components/introduce/SectionTwo.vue";
+import SectionThree from "@/components/introduce/SectionThree.vue";
+import SectionFour from "@/components/introduce/SectionFour.vue";
+
+export default {
+  components: {
+    SectionFour,
+    SectionOne,
+    SectionTwo,
+    SectionThree
+  }
+
+}
+</script>
 <style scoped lang="scss">
 .container-introduce {
   width: 100%;
@@ -78,7 +71,8 @@
     position: fixed;
     top: 0;
     width: 100%;
-    .logo{
+
+    .logo {
       font-size: 20px;
       font-weight: 700;
       color: #2d2e32;
@@ -100,54 +94,31 @@
 
   }
 
-  .section-one {
-    background-color: #f9f9f9;
+  .footer {
+    background-color: #2d2e32;
+    font-size: 10px;
+    padding: 50px 0px;
     display: flex;
-    gap: 10rem;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    margin-top: 70px;
-    justify-content: center;
-    .avt{
-      width: 350px;
-      height: 350px;
-      border-radius: 999px;
+    justify-content: space-around;
+    .footer-left {
+      color: #ffffff;
+      font-size: 17px;
+      font-weight: 700;
     }
-    .generality{
+    .footer-right{
       display: flex;
-      flex-direction: column;
-      width: 500px;
-      height: 325px;
-      .link{
-        cursor: pointer;
-        display: flex;
-        gap: 1.3rem;
-        margin: 2.5rem 0;
-        .fa-brands{
-          color: #2d2e32;
-          width: 26px;
-          height: 30px;
-
+      gap:15px;
+      .fa-brands{
+        font-size: 23px;
+        color: #FFFFFF;
+        &:hover{
+          transform: scale(1.2);
+          transition: all .2s ease-in-out;
+          cursor: pointer;
         }
       }
-      .specialized-field{
-        color: #555;
-        font-size: 55px;
-        font-weight: 700;
-        line-height: 66px;
-        margin:20px 0;
-      }
-      .introduce{
-        color: #2d2e32;
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 28px;
-        //margin-bottom: 2rem;
-        //margin-top: 2rem;
-      }
     }
-
   }
+
 }
 </style>
