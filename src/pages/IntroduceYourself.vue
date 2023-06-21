@@ -16,6 +16,7 @@
           <a href="#contact">Contact</a>
         </li>
       </ul>
+      <i class="fa-solid fa-bars"></i>
     </div>
     <SectionOne/>
     <SectionTwo/>
@@ -71,7 +72,10 @@ export default {
     position: fixed;
     top: 0;
     width: 100%;
-
+    z-index: 3;
+    .fa-bars{
+      display: none;
+    }
     .logo {
       font-size: 20px;
       font-weight: 700;
@@ -119,6 +123,26 @@ export default {
       }
     }
   }
-
+   @media (max-width: 415px) {
+     .header{
+       .link{
+         display: none;
+       }
+       .fa-bars{
+         display: block;
+       }
+     }
+     .footer{
+       display: flex;
+       flex-direction: column;
+       .footer-left{
+         text-align: center;
+         margin-bottom: 10px;
+       }
+       .footer-right{
+         margin: 0 auto;
+       }
+     }
+   }
 }
 </style>

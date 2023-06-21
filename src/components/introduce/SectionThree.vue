@@ -16,4 +16,11 @@
     text-align: center;
   }
 }
+@media (max-width: 415px) {
+  .section-two{
+    display: flex;
+    flex-direction: column;
+  }
+
+}
 </style>

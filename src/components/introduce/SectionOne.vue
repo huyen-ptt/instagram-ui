@@ -32,10 +32,8 @@
         </div>
       </div>
     </div>
-
-    <div>
-      <img class="avt" src="@/assets/page_new/avt.jpg"/>
-
+    <div class="avt">
+<!--      <img class="avt" src="@/assets/page_new/avt.jpg"/>-->
     </div>
   </div>
 </template>
@@ -50,6 +48,30 @@
   //margin-top: 10px;
   justify-content: center;
   padding-bottom: 30px;
+  .avt{
+    animation: avtt 8s ease-in-out infinite;
+    background-image: url(@/assets/page_new/avt.jpg);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 3px solid #2d2e32;
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+    height: 35rem;
+    position: relative;
+    transition: all 1s ease-in-out;
+    width: 35rem;
+  }
+  @keyframes avtt {
+    0% {
+      border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+    }
+    50% {
+      border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
+    }
+    100% {
+      border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+    }
+  }
   .array-do {
     display: flex;
     align-items: center;
@@ -73,7 +95,7 @@
         align-items: center;
         background-color: #ffffff;
         border-radius: 999px;
-        box-shadow: #000000 0px 0px 10px 0px;
+        box-shadow: 0 0 10px rgba(0,0,0,.09);
         color: #767676;
         display: flex;
         font-size: 17px;
@@ -133,6 +155,48 @@
       //margin-top: 2rem;
     }
   }
-
+}
+@media (max-width: 415px) {
+  .section-one{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding: 9rem 20px;
+    gap:5rem;
+    .array-do{
+      display: flex;
+      flex-direction: column;
+    }
+    .avt{
+      order: 3;
+    }
+    .generality{
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      order: 4;
+      .specialized-field{
+        font-size: 40px;
+        line-height: 45px;
+        text-align: center;
+      }
+      .introduce{
+        text-align: center;
+      }
+      .link{
+        gap:2rem;
+      }
+    }
+    .array-do{
+      .stack{
+        margin: 0;
+        padding-bottom: 10px;
+        border-bottom: 2px solid grey;
+        border-right: 0;
+        text-align: center;
+        padding-right: 0;
+      }
+    }
+  }
 }
 </style>

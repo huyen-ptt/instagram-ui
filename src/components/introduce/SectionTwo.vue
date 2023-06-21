@@ -58,4 +58,27 @@
     }
   }
 }
+@media (max-width: 415px) {
+  .section-two{
+    display: flex;
+    flex-direction: column;
+    padding:0 30px;
+    .logo-section-three{
+      height: 200px;
+    }
+    .about-me{
+      width: 100%;
+      height: 100%;
+      .title-one{
+        text-align: center;
+      }
+      .title-two{
+        text-align: center;
+      }
+      .title-three{
+        text-align: center;
+      }
+    }
+  }
+}
 </style>

@@ -10,7 +10,7 @@
           <div class="circle">
             <i class="fa-solid fa-map-location-dot"></i>
           </div>
-          <div>
+          <div class="bao-local">
             <div class="local">Location</div>
             <div class="current-position">Belgrade, Serbia</div>
           </div>
@@ -19,7 +19,7 @@
           <div class="circle">
             <i class="fa-solid fa-envelope-open-text"></i>
           </div>
-          <div>
+          <div class="bao-local">
             <div class="local">Mail</div>
             <div class="current-position">stefan.topallovic@gmail.com</div>
           </div>
@@ -91,6 +91,32 @@
           font-size: 30px;
           font-weight: 900;
           line-height: 30px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 415px) {
+  .section-four{
+    width: 100%;
+    .item-one{
+      text-align: center;
+    }
+    .item-two{
+      text-align: center;
+    }
+    .bao{
+      width: 100%;
+      .thong-tin{
+        display: flex;
+        flex-direction: column;
+        .item-thong-tin{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          .bao-local{
+            text-align: center;
+          }
         }
       }
     }
