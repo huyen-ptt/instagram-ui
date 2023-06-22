@@ -13,6 +13,9 @@ html {
 .el-dialog.custom-modal {
     border-radius: 20px;
 }
+a{
+    text-decoration: none;
+}
 .custom-modal .el-dialog__header {
     text-align: center;
 }

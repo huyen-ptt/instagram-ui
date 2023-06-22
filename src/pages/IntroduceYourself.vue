@@ -37,10 +37,7 @@
         Copyright ©2023. All rights are reserved
       </div>
       <div class="footer-right">
-        <a href="https://www.linkedin.com/in/stefan-topalovic-dev/">
-          <i class="fa-brands fa-linkedin"></i>
-        </a>
-        <a href="https://github.com/stefvndev">
+        <a href="https://github.com/phamthanhhuyen19124">
           <i class="fa-brands fa-github"></i></a>
       </div>
     </div>
@@ -96,7 +93,7 @@ export default {
   .mobile-link{
     display: none;
   }
-  .header {
+  .header{
     align-items: center;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, .09);

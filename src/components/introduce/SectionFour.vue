@@ -96,7 +96,7 @@
     }
   }
 }
-@media (max-width: 415px) {
+@media (max-width: 586px) {
   .section-four{
     width: 100%;
     .item-one{

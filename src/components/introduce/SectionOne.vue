@@ -66,7 +66,7 @@ export default {
   padding-bottom: 30px;
   .avt{
     animation: avtt 8s ease-in-out infinite;
-    background-image: url(@/assets/page_new/img-avt.jpg);
+    background-image: url(@/assets/page_new/avt-me.jpg);
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -173,7 +173,7 @@ export default {
     }
   }
 }
-@media (max-width: 415px) {
+@media (max-width: 586px) {
   .section-one{
     display: flex;
     flex-direction: column;

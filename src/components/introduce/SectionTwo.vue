@@ -59,7 +59,7 @@
   }
 }
 
-@media (max-width: 415px) {
+@media (max-width: 586px) {
   .section-two {
     display: flex;
     flex-direction: column;
@@ -83,6 +83,7 @@
 
       .title-three {
         text-align: center;
+        margin-bottom: 40px;
       }
     }
   }
