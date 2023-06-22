@@ -1,6 +1,7 @@
 <template>
   <div class="container-introduce">
-    <div v-if="openMenu" class="mobile-nav">
+<!--    <div v-if="openMenu" class="mobile-nav">-->
+    <div :class="getClass()">
       <span>
         <i @click="closeMenu" class="fa-solid fa-xmark"></i>
       </span>
@@ -76,7 +77,14 @@ export default {
     },
     toggleMenu(){
       this.openMenu = !this.openMenu
-    }
+    },
+    getClass(){
+      if(this.openMenu){
+        return 'mobile-nav open-menu'
+      }else {
+        return 'mobile-nav close-menu'
+      }
+    },
   }
 }
 </script>
@@ -194,6 +202,12 @@ export default {
           text-decoration: none;
         }
       }
+    }
+    .open-menu {
+      left: 0;
+    }
+    .close-menu {
+      left: -100%;
     }
     .header {
       .link {
