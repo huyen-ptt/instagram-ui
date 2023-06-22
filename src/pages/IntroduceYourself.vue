@@ -1,6 +1,5 @@
 <template>
   <div class="container-introduce">
-<!--    <div v-if="openMenu" class="mobile-nav">-->
     <div :class="getClass()">
       <span>
         <i @click="closeMenu" class="fa-solid fa-xmark"></i>
@@ -80,9 +79,9 @@ export default {
     },
     getClass(){
       if(this.openMenu){
-        return 'mobile-nav open-menu'
+        return 'mobile-link open-menu'
       }else {
-        return 'mobile-nav close-menu'
+        return 'mobile-link close-menu'
       }
     },
   }
@@ -94,7 +93,9 @@ export default {
   background: #FFFFFF;
   height: 100vh;
   font-size: 17px;
-
+  .mobile-link{
+    display: none;
+  }
   .header {
     align-items: center;
     background-color: #fff;
@@ -167,7 +168,7 @@ export default {
   }
 
   @media (max-width: 415px) {
-    .mobile-nav {
+    .mobile-link {
       align-items: center;
       background-color: #fff;
       display: flex;
