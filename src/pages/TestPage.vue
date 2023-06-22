@@ -1,36 +1,20 @@
 <template>
-  <nav>
-    <ul>
-      <li :class="{ 'active': activeMenu === 'home' }"><router-link to="/">Home</router-link></li>
-      <li :class="{ 'active': activeMenu === 'about' }"><router-link to="/about">About</router-link></li>
+  <div>
+    <button @click="isMenuVisible = !isMenuVisible">Menu</button>
+    <ul v-show="isMenuVisible">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
     </ul>
-  </nav>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      activeMenu: ''
-    }
-  },
-  watch: {
-    '$route.path' (newValue) {
-      if (newValue.includes('home')) {
-        this.activeMenu = 'home';
-      } else if (newValue.includes('about')) {
-        this.activeMenu = 'about';
-      } else {
-        this.activeMenu = '';
-      }
+      isMenuVisible: false
     }
   }
 }
 </script>
-<style scoped>
-nav ul li.active {
-  font-weight: bold;
-  font-size: 18px;
-  border-bottom: 2px solid #ccc;
-}
-</style>

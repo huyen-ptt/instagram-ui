@@ -6,13 +6,13 @@
     </div>
     <div class="about-me">
       <div class="title-one">About me</div>
-      <div class="title-two">A dedicated Front-end Developer based in Belgrade, Serbia 📍</div>
-      <div class="title-three">As a Junior Front-End Developer, I possess an impressive arsenal of skills in HTML, CSS,
-        JavaScript, React,
-        Tailwind, and SCSS. I excel in designing and maintaining responsive websites that offer a smooth user
-        experience. My expertise lies in crafting dynamic, engaging interfaces through writing clean and optimized code
-        and utilizing cutting-edge development tools and techniques. I am also a team player who thrives in
-        collaborating with cross-functional teams to produce outstanding web applications.
+      <div class="title-two">Lập trình viên về Front-end sống tại Hưng Yên, Việt Nam📍</div>
+      <div class="title-three">
+        Với tư cách là một lập trình viên Front-End ,tôi biết về HTML, CSS, JavaScript, Vue , SCSS. Tôi xuất sắc trong
+        việc thiết kế và duy trì các trang web đáp ứng mang lại trải nghiệm mượt mà cho người dùng. Chuyên môn của tôi
+        là tạo ra các giao diện năng động, hấp dẫn thông qua việc viết mã rõ ràng và được tối ưu hóa, đồng thời sử dụng
+        các công cụ và kỹ thuật phát triển tiên tiến. Tôi mong có thể đồng hành được với mọi người trong thời gian sắp
+        tới.
       </div>
     </div>
   </div>
@@ -58,24 +58,30 @@
     }
   }
 }
+
 @media (max-width: 415px) {
-  .section-two{
+  .section-two {
     display: flex;
     flex-direction: column;
-    padding:0 30px;
-    .logo-section-three{
+    padding: 0 30px;
+
+    .logo-section-three {
       height: 200px;
     }
-    .about-me{
+
+    .about-me {
       width: 100%;
       height: 100%;
-      .title-one{
+
+      .title-one {
         text-align: center;
       }
-      .title-two{
+
+      .title-two {
         text-align: center;
       }
-      .title-three{
+
+      .title-three {
         text-align: center;
       }
     }

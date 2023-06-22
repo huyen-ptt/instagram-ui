@@ -2,7 +2,7 @@
   <div class="section-one" id="home">
     <div class="generality">
       <div class="specialized-field">Front-End Vue Developer</div>
-      <div class="introduce">Xin Chào , Tôi tên là Huyền , Là một lập trình viên về Font-end. Mình đến từ Hưng Yên 📍
+      <div class="introduce">Xin Chào , Tôi tên là Huyền ,{{age}} tuổi Là một lập trình viên về Font-end. Mình đến từ Hưng Yên 📍
       </div>
       <div class="link">
         <a target="_blank" href="https://www.linkedin.com/in/stefan-topalovic-dev/">
@@ -35,10 +35,24 @@
       </div>
     </div>
     <div class="avt">
-<!--      <img class="avt" src="@/assets/page_new/avt.jpg"/>-->
     </div>
   </div>
 </template>
+<script>
+export default {
+  data(){
+    return{
+      ageme: 2004
+    }
+  },
+  computed:{
+    age(){
+      const currentYear = new Date().getFullYear(); // Lấy năm hiện tại
+      return currentYear - this.ageme; // tính toán tuổi người dùng
+    }
+  }
+}
+</script>
 <style scoped lang="scss">
 .section-one {
   background-color: #f9f9f9;
@@ -52,7 +66,7 @@
   padding-bottom: 30px;
   .avt{
     animation: avtt 8s ease-in-out infinite;
-    background-image: url(@/assets/page_new/avt.jpg);
+    background-image: url(@/assets/page_new/img-avt.jpg);
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;

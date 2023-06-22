@@ -1,5 +1,15 @@
 <template>
   <div class="container-introduce">
+    <div v-if="openMenu" class="mobile-nav">
+      <span>
+        <i @click="closeMenu" class="fa-solid fa-xmark"></i>
+      </span>
+      <ul>
+        <li v-for="m in menu " :key="m.url">
+          <a :href="m.url" @click="toggleMenu">{{m.name}}</a>
+        </li>
+      </ul>
+    </div>
     <div class="header">
       <div class="logo">ThanhHuyen</div>
       <ul class="link">
@@ -16,7 +26,7 @@
           <a href="#contact">Contact</a>
         </li>
       </ul>
-      <i class="fa-solid fa-bars"></i>
+      <i @click="openMenu=!openMenu" class="fa-solid fa-bars"></i>
     </div>
     <SectionOne/>
     <SectionTwo/>
@@ -48,8 +58,26 @@ export default {
     SectionOne,
     SectionTwo,
     SectionThree
+  },
+  data() {
+    return {
+      openMenu: false,
+      menu: [
+        {url:"#home",name:"Home"},
+        {url:"#about",name:"About"},
+        {url:"#projects",name:"Projects"},
+        {url:"#contact",name:"Contact"},
+      ]
+    }
+  },
+  methods:{
+    closeMenu(){
+      this.openMenu = false
+    },
+    toggleMenu(){
+      this.openMenu = !this.openMenu
+    }
   }
-
 }
 </script>
 <style scoped lang="scss">
@@ -73,9 +101,11 @@ export default {
     top: 0;
     width: 100%;
     z-index: 3;
-    .fa-bars{
+
+    .fa-bars {
       display: none;
     }
+
     .logo {
       font-size: 20px;
       font-weight: 700;
@@ -104,18 +134,22 @@ export default {
     padding: 50px 0px;
     display: flex;
     justify-content: space-around;
+
     .footer-left {
       color: #ffffff;
       font-size: 17px;
       font-weight: 700;
     }
-    .footer-right{
+
+    .footer-right {
       display: flex;
-      gap:15px;
-      .fa-brands{
+      gap: 15px;
+
+      .fa-brands {
         font-size: 23px;
         color: #FFFFFF;
-        &:hover{
+
+        &:hover {
           transform: scale(1.2);
           transition: all .2s ease-in-out;
           cursor: pointer;
@@ -123,26 +157,66 @@ export default {
       }
     }
   }
-   @media (max-width: 415px) {
-     .header{
-       .link{
-         display: none;
-       }
-       .fa-bars{
-         display: block;
-       }
-     }
-     .footer{
-       display: flex;
-       flex-direction: column;
-       .footer-left{
-         text-align: center;
-         margin-bottom: 10px;
-       }
-       .footer-right{
-         margin: 0 auto;
-       }
-     }
-   }
+
+  @media (max-width: 415px) {
+    .mobile-nav {
+      align-items: center;
+      background-color: #fff;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      left: 0;
+      position: fixed;
+      text-align: center;
+      top: 0;
+      transition: all .3s ease-in-out;
+      width: 100%;
+      z-index: 300;
+      .fa-solid{
+        font-size: 30px;
+      }
+      span{
+        cursor: pointer;
+        font-size: 3.3rem;
+        position: absolute;
+        right: 4rem;
+        top: 2rem;
+      }
+      ul{
+        display: flex;
+        flex-direction: column;
+        font-size: 2rem;
+        gap: 4rem;
+        list-style: none;
+        a{
+          color: #000;
+          font-weight: 500;
+          text-decoration: none;
+        }
+      }
+    }
+    .header {
+      .link {
+        display: none;
+      }
+
+      .fa-bars {
+        display: block;
+      }
+    }
+    .footer {
+      display: flex;
+      flex-direction: column;
+
+      .footer-left {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .footer-right {
+        margin: 0 auto;
+      }
+    }
+  }
 }
 </style>
