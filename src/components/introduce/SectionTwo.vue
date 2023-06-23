@@ -8,11 +8,7 @@
       <div class="title-one">About me</div>
       <div class="title-two">Lập trình viên về Front-end sống tại Hưng Yên, Việt Nam📍</div>
       <div class="title-three">
-        Với tư cách là một lập trình viên Front-End ,tôi biết về HTML, CSS, JavaScript, Vue , SCSS. Tôi xuất sắc trong
-        việc thiết kế và duy trì các trang web đáp ứng mang lại trải nghiệm mượt mà cho người dùng. Chuyên môn của tôi
-        là tạo ra các giao diện năng động, hấp dẫn thông qua việc viết mã rõ ràng và được tối ưu hóa, đồng thời sử dụng
-        các công cụ và kỹ thuật phát triển tiên tiến. Tôi mong có thể đồng hành được với mọi người trong thời gian sắp
-        tới.
+        Với tư cách là một lập trình viên Front-End, tôi biết về HTML, CSS, JavaScript, Vue, SCSS.
       </div>
     </div>
   </div>

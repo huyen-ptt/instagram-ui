@@ -6,9 +6,9 @@
       </div>
       <div class="wrapper-information">
         <a class="github" href="https://huyenptt-instagram.netlify.app/" target="_blank">Giao diện Instagram</a>
-        <div class="gioi-thieu">Website hiện thị giao diện gần giống với trang Instagram . Bao gồm các trang như Home,
+        <div class="gioi-thieu">Website hiện thị giao diện gần giống với trang Instagram. Bao gồm các trang như Home,
           Explore Reels
-          ,Messegnger ,Created và Profile. Instagram cũng cho phép người dùng tương tác với những bài viết trong đó và
+          ,Messegnger, Created và Profile. Instagram cũng cho phép người dùng tương tác với những bài viết trong đó và
           có
           thể nhắn tin trên phương diện người dùng và bản thân...
         </div>
@@ -116,10 +116,12 @@
     display: flex;
     flex-direction: column;
     gap:0px;
+    padding: 20px;
     .section-three-small{
       display: flex;
       flex-direction: column;
       .wrapper-information{
+        width: 100%;
         .github{
           text-align: center;
         }

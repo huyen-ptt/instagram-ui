@@ -2,13 +2,10 @@
   <div class="section-one" id="home">
     <div class="generality">
       <div class="specialized-field">Front-End Vue Developer</div>
-      <div class="introduce">Xin Chào , Tôi tên là Huyền ,{{age}} tuổi Là một lập trình viên về Font-end. Mình đến từ Hưng Yên 📍
+      <div class="introduce">Xin Chào, tôi tên là Huyền, {{age}} tuổi Là một lập trình viên về Front-end. Mình đến từ Hưng Yên 📍
       </div>
       <div class="link">
-        <a target="_blank" href="https://www.linkedin.com/in/stefan-topalovic-dev/">
-          <i class="fa-brands fa-linkedin"></i>
-        </a>
-        <a target="_blank" href="https://github.com/stefvndev">
+        <a href="https://github.com/phamthanhhuyen19124" target="_blank">
           <i class="fa-brands fa-github"></i>
         </a>
       </div>

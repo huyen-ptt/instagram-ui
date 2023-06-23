@@ -37,7 +37,7 @@
         Copyright ©2023. All rights are reserved
       </div>
       <div class="footer-right">
-        <a href="https://github.com/phamthanhhuyen19124">
+        <a href="https://github.com/phamthanhhuyen19124" target="_blank">
           <i class="fa-brands fa-github"></i></a>
       </div>
     </div>
