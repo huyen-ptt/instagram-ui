@@ -13,9 +13,9 @@
           thể nhắn tin trên phương diện người dùng và bản thân...
         </div>
         <div class="demo">
-          <a href="https://github.com/phamthanhhuyen19124/instagram-ui" class="githubb">
+          <a href="https://github.com/phamthanhhuyen19124/instagram-ui" class="githubb" target="_blank">
             <i class="fa-brands fa-github"></i>
-            <div>Github</div>
+            <div class="name">Github</div>
           </a>
           <a class="link-demo btn-demo" href="https://huyenptt-instagram.netlify.app/" target="_blank">
             <span>Demo</span>
@@ -86,6 +86,9 @@
           display: flex;
           align-items: center;
           gap: 10px;
+          .name{
+            color: #767676;
+          }
         }
 
         .btn-demo {
